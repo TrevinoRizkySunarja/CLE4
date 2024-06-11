@@ -1,5 +1,7 @@
 Verander dingen en voeg dingen toe aan dit plan
 
+Elk level is een Scene met een eigen map
+
 Level 1:
     - map: in het oude Zuiderziekenhuis
     - doel: bij de uitgang komen
