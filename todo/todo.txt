@@ -32,4 +32,4 @@ Level 5:
 Level 6:
     - map: Groene Hilledijk 4 ./images/4-groene-hilledijk.png
       (spoor op exact zelfde hoek als groene hilledijk 1, gebouwen rechts weg laten. bomen minder dekkend en veel kleiner zodat ze de gebouwen links niet bedekken.),
-    - doel: Kraaien van het spoor af lokken met eten van een bestaand restaurant
+    - doel: Kraaien van het spoor af lokken met eten van een bestaand restaurant, misschien aanwezige voedselbank
