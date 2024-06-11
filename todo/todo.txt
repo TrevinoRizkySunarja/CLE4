@@ -1,0 +1,19 @@
+Verander dingen en voeg dingen toe aan dit plan
+
+Level 1:
+    - map: in het oude Zuiderziekenhuis
+    - doel: bij de uitgang komen
+
+Level 2:
+    - map: voor het oude Zuiderziekenhuis,
+    - doel: bij de tram komen
+
+Level 3:
+    - map: Groene Hilledijk 1,
+    - doel: Boom van spoor halen
+
+Level 4:
+    - map: Groene Hilledijk 2,
+    - doel: Bovenleiding ophangen
+
+Level 5:
