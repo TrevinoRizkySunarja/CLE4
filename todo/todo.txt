@@ -1,5 +1,12 @@
 Verander dingen en voeg dingen toe aan dit plan
 
+
+De game start binnen in het Zuiderziekenhuis.
+De speler moet zwakke zombies slaan om uit de voordeur te komen.
+Daarna ziet de speler een gestrande politieauto staan. De speler moet er naartoe lopen om weg te rijden maar ziet dat de benzine op is.
+De speler pakt een pistool uit de politieauto en gaat daarmee naar de dichtsbijzijnde tramhalte. Daar staat een tram waarmee hij wegrijd.
+
+
 Elk level is een Scene met een eigen map
 
 Level 1:
@@ -8,14 +15,20 @@ Level 1:
 
 Level 2:
     - map: voor het oude Zuiderziekenhuis,
-    - doel: bij de tram komen
+    - doel: bij de de politieauto komen
 
 Level 3:
     - map: Groene Hilledijk 1,
-    - doel: Boom van spoor halen
+    - doel: zombies doodschieten en bij de verlaten tram komen
 
 Level 4:
     - map: Groene Hilledijk 2,
-    - doel: Bovenleiding ophangen
+    - doel: Boom van spoor halen
 
 Level 5:
+    - map: Groene Hilledijk 3,
+    - doel: Bovenleiding ophangen
+
+Level 6:
+    - map: Groene Hilledijk 4,
+    - doel: Kraaien van het spoor af lokken met eten van een bestaand restaurant
