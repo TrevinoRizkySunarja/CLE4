@@ -1,6 +1,6 @@
 import '../css/style.css';
-import {Actor, Engine, Vector, DisplayMode} from 'excalibur';
-import {Resources, ResourceLoader} from './resources.js';
+import {Engine, DisplayMode} from 'excalibur';
+import {ResourceLoader} from './resources.js';
 import {Lvl1} from './scenes/lvl1.js';
 
 export class Game extends Engine {
