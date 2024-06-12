@@ -1,16 +1,23 @@
 import {Scene, Actor, Vector} from 'excalibur';
 import {Resources} from '../resources';
+import {Player} from '../player';
 
 class Lvl1 extends Scene {
 	constructor() {
 		super();
 	}
 	onActivate() {
-		this.player = new Actor();
-		this.player.graphics.use(Resources.Fish.toSprite());
-		this.player.pos = new Vector(400, 300);
-		this.player.vel = new Vector(-10, 0);
+		this.background = new Actor();
+		this.background.graphics.use(Resources.Background1.toSprite());
+		this.background.pos = new Vector(0, 0);
+		this.add(this.background);
+
+		this.player = new Player({
+			pos: new Vector(0, 0)
+		});
 		this.add(this.player);
+
+		this.camera.strategy.lockToActor(this.player);
 	}
 	onDeactivate() {
 		this.clear();

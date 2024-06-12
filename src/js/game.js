@@ -6,6 +6,7 @@ import {Lvl1} from './scenes/lvl1.js';
 export class Game extends Engine {
 	constructor() {
 		super({
+			// 1440x900 of 1280x800 of 800x500
 			width: 800,
 			height: 500,
 			maxFps: 60,
@@ -18,9 +19,6 @@ export class Game extends Engine {
 		console.log('start de game!');
 		this.addScene('lvl1', new Lvl1());
 		this.goToScene('lvl1');
-		setInterval(() => {
-			this.goToScene('lvl1');
-		}, 2000);
 	}
 }
 
