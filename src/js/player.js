@@ -9,10 +9,11 @@ class Player extends Actor {
 	}
 
 	onInitialize() {
-		this.graphics.use(Resources.PlayerFullHealth.toSprite());
+		this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
 	}
 
 	lookingLeft = false;
+	lookingUp = true;
 
 	onPreUpdate(engine) {
 		this.vel.x = 0;
@@ -20,26 +21,22 @@ class Player extends Actor {
 		if (engine.input.keyboard.isHeld(Keys.S)) {
 			console.log('s');
 			this.vel.y += 80;
+			this.graphics.use(Resources.PlayerFullHealthDown.toSprite());
 		}
 		if (engine.input.keyboard.isHeld(Keys.W)) {
 			console.log('w');
 			this.vel.y -= 80;
+			this.graphics.use(Resources.PlayerFullHealthUp.toSprite());
 		}
 		if (engine.input.keyboard.isHeld(Keys.D)) {
 			console.log('d');
 			this.vel.x += 80;
-			if (this.lookingLeft === true) {
-				this.scale.x *= -1;
-				this.lookingLeft = false;
-			}
+			this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
 		}
 		if (engine.input.keyboard.isHeld(Keys.A)) {
 			console.log('a');
 			this.vel.x -= 80;
-			if (this.lookingLeft === false) {
-				this.scale.x *= -1;
-				this.lookingLeft = true;
-			}
+			this.graphics.use(Resources.PlayerFullHealthLeft.toSprite());
 		}
 		console.log(this.vel);
 	}
