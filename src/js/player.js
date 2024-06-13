@@ -1,8 +1,8 @@
-import {Actor, Keys, Vector} from 'excalibur';
-import {Resources} from './resources';
+import { Actor, Keys, Vector } from 'excalibur';
+import { Resources } from './resources';
 
 class Player extends Actor {
-	constructor({pos}) {
+	constructor({ pos }) {
 		super();
 		this.pos = pos;
 		this.scale = new Vector(2, 2);
@@ -11,6 +11,8 @@ class Player extends Actor {
 	onInitialize() {
 		this.graphics.use(Resources.PlayerFullHealth.toSprite());
 	}
+
+	lookingLeft = false;
 
 	onPreUpdate(engine) {
 		this.vel.x = 0;
@@ -26,13 +28,21 @@ class Player extends Actor {
 		if (engine.input.keyboard.isHeld(Keys.D)) {
 			console.log('d');
 			this.vel.x += 80;
+			if (this.lookingLeft === true) {
+				this.scale.x *= -1;
+				this.lookingLeft = false;
+			}
 		}
 		if (engine.input.keyboard.isHeld(Keys.A)) {
 			console.log('a');
 			this.vel.x -= 80;
+			if (this.lookingLeft === false) {
+				this.scale.x *= -1;
+				this.lookingLeft = true;
+			}
 		}
 		console.log(this.vel);
 	}
 }
 
-export {Player};
+export { Player };
