@@ -53,13 +53,13 @@ class Apocalypse extends Scene {
 
 		if (this.wave.durationMilliseconds === 0) {
 			console.log(`${this.wave.title} survived!`);
-			this.wave = null;
 			if (!this.wave.final) {
 				this.goToNextWave();
 				return;
 			}
 
 			// if is final wave:
+			this.wave = null;
 		}
 	}
 }
