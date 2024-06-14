@@ -1,15 +1,15 @@
-import { Actor, Vector } from "excalibur"
+import { Actor, Keys, Vector } from "excalibur"
 import { Resources } from "./resources"
 
 export class Bullet extends Actor {
-    constructor(x, y) {
+    constructor(x, y, bulletSpeedX, bulletSpeedY, minusX, minusY) {
         super({ width: 5, height: 3 })
-        this.pos = new Vector(x + 30, y - 4)
+        this.pos = new Vector(x, y)
+        this.vel = new Vector(bulletSpeedX, bulletSpeedY)
     }
 
     onInitialize() {
         this.graphics.use(Resources.Bullet.toSprite())
-        this.vel = new Vector(300, 0)
-        this.scale = new Vector(3, 2)
+        this.scale = new Vector(1, 1)
     }
 }

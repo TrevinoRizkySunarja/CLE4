@@ -10,7 +10,7 @@ const Resources = {
 	PistolRight: new ImageSource('images/pistolRight.png'),
 	PistolLeft: new ImageSource('images/pistolLeft.png'),
 	PistolUp: new ImageSource('images/pistolUp.png'),
-	Bullet: new ImageSource('images/bullet.png')
+	Bullet: new ImageSource('images/bullet.png'),
 };
 
 const ResourceLoader = new Loader();

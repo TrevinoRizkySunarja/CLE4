@@ -20,27 +20,37 @@ class Player extends Actor {
 		this.vel.x = -100;
 		this.vel.x = 0;
 		this.vel.y = 0;
+		this.posMinX = 0;
+		this.posMinY = 0;
 		if (engine.input.keyboard.isHeld(Keys.S)) {
 			this.vel.y += 80;
 			this.graphics.use(Resources.PlayerFullHealthDown.toSprite());
+			this.bulletSpeedX = 0;
+			this.bulletSpeedY = 300;
 		}
 		if (engine.input.keyboard.isHeld(Keys.W)) {
 			this.vel.y -= 80;
 			this.graphics.use(Resources.PlayerFullHealthUp.toSprite());
+			this.bulletSpeedX = 0;
+			this.bulletSpeedY = -300;
 		}
 		if (engine.input.keyboard.isHeld(Keys.D)) {
 			this.vel.x += 80;
 			this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
+			this.bulletSpeedX = 300;
+			this.bulletSpeedY = 0;
 		}
 		if (engine.input.keyboard.isHeld(Keys.A)) {
 			this.vel.x -= 80;
 			this.graphics.use(Resources.PlayerFullHealthLeft.toSprite());
+			this.bulletSpeedX = -300;
+			this.bulletSpeedY = 0;
 		}
 		const spacePressed = engine.input.keyboard.isHeld(Keys.Space);
 
 		if (spacePressed && !this.prevSpacePressed) {
 			console.log('space');
-			const bullet = new Bullet(this.pos.x, this.pos.y);
+			const bullet = new Bullet(this.pos.x, this.pos.y, this.bulletSpeedX, this.bulletSpeedY);
 			engine.add(bullet);
 		}
 		this.prevSpacePressed = spacePressed;
