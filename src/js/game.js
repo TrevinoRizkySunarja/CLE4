@@ -16,7 +16,6 @@ export class Game extends Engine {
 	}
 
 	startGame() {
-		console.log('start de game!');
 		this.addScene('apocalypse', new Apocalypse());
 		this.goToScene('apocalypse');
 	}
