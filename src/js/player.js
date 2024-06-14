@@ -1,7 +1,11 @@
 import { Actor, Keys, Vector } from 'excalibur';
 import { Resources } from './resources';
+import { Pistol } from './pistol';
 
 class Player extends Actor {
+	pistolPosX = 0;
+	pistolPosY = 0;
+
 	constructor({ pos }) {
 		super();
 		this.pos = pos;
@@ -10,6 +14,8 @@ class Player extends Actor {
 
 	onInitialize() {
 		this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
+		const pistol = new Pistol()
+		this.addChild(pistol)
 	}
 
 	lookingLeft = false;

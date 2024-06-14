@@ -1,6 +1,6 @@
-import {Scene, Actor, Vector} from 'excalibur';
-import {Resources} from '../resources';
-import {Player} from '../player';
+import { Scene, Actor, Vector } from 'excalibur';
+import { Resources } from '../resources';
+import { Player } from '../player';
 
 class Lvl1 extends Scene {
 	constructor() {
@@ -24,4 +24,4 @@ class Lvl1 extends Scene {
 	}
 }
 
-export {Lvl1};
+export { Lvl1 };
