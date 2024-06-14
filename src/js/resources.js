@@ -6,7 +6,9 @@ const Resources = {
 	PlayerFullHealthRight: new ImageSource('images/players/playerRight.png'),
 	PlayerFullHealthLeft: new ImageSource('images/players/playerLeft.png'),
 	PlayerFullHealthUp: new ImageSource('images/players/playerUp.png'),
-	PlayerFullHealthDown: new ImageSource('images/players/playerDown.png')
+	PlayerFullHealthDown: new ImageSource('images/players/playerDown.png'),
+	PistolRight: new ImageSource('images/pistolRight.png'),
+	PistolLeft: new ImageSource('images/pistolLeft.png')
 };
 
 const ResourceLoader = new Loader();

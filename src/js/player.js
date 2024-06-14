@@ -1,5 +1,6 @@
 import {Actor, Keys, Vector} from 'excalibur';
 import {Resources} from './resources';
+import {Pistol} from './pistol';
 
 class Player extends Actor {
 	constructor({pos}) {
@@ -9,7 +10,9 @@ class Player extends Actor {
 	}
 
 	onInitialize() {
-		this.graphics.use(Resources.PlayerFullHealthDown.toSprite());
+		this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
+		const pistol = new Pistol();
+		this.addChild(pistol);
 	}
 
 	onPreUpdate(engine) {
