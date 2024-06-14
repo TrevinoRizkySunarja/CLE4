@@ -1,6 +1,7 @@
 import { Actor, Engine, Keys, Vector } from "excalibur";
 import { Player } from "./player";
 import { Resources } from "./resources";
+import { Bullet } from "./bullet";
 
 export class Pistol extends Actor {
     constructor() {
@@ -11,13 +12,15 @@ export class Pistol extends Actor {
     }
 
     onPreUpdate(engine) {
-        if (engine.input.keyboard.isHeld(Keys.D)) {
+        if (engine.input.keyboard.isHeld(Keys.S)) {
             console.log('s');
-
+            this.graphics.use(Resources.PistolUp.toSprite())
+            this.pos = new Vector(5.5, -3)
         }
         if (engine.input.keyboard.isHeld(Keys.W)) {
             console.log('w');
-
+            this.graphics.use(Resources.PistolUp.toSprite())
+            this.pos = new Vector(6.5, -5)
         }
         if (engine.input.keyboard.isHeld(Keys.D)) {
             console.log('d');
@@ -30,6 +33,7 @@ export class Pistol extends Actor {
             this.graphics.use(Resources.PistolLeft.toSprite())
             this.pos = new Vector(-15, -3)
         }
+
     }
 
 

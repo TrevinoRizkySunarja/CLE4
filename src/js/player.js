@@ -1,9 +1,10 @@
-import {Actor, Keys, Vector} from 'excalibur';
-import {Resources} from './resources';
-import {Pistol} from './pistol';
+import { Actor, Keys, Vector } from 'excalibur';
+import { Resources } from './resources';
+import { Pistol } from './pistol';
+import { Bullet } from './bullet';
 
 class Player extends Actor {
-	constructor({pos}) {
+	constructor({ pos }) {
 		super();
 		this.pos = pos;
 		this.scale = new Vector(1.5, 1.5);
@@ -35,7 +36,16 @@ class Player extends Actor {
 			this.vel.x -= 80;
 			this.graphics.use(Resources.PlayerFullHealthLeft.toSprite());
 		}
+		const spacePressed = engine.input.keyboard.isHeld(Keys.Space);
+
+		if (spacePressed && !this.prevSpacePressed) {
+			console.log('space');
+			const bullet = new Bullet(this.pos.x, this.pos.y);
+			engine.add(bullet);
+		}
+		this.prevSpacePressed = spacePressed;
 	}
 }
 
-export {Player};
+
+export { Player };
