@@ -1,7 +1,7 @@
 import '../css/style.css';
 import {Engine, DisplayMode} from 'excalibur';
 import {ResourceLoader} from './resources.js';
-import {Lvl1} from './scenes/lvl1.js';
+import {Apocalypse} from './Apocalypse.js';
 
 export class Game extends Engine {
 	constructor() {
@@ -17,8 +17,8 @@ export class Game extends Engine {
 
 	startGame() {
 		console.log('start de game!');
-		this.addScene('lvl1', new Lvl1());
-		this.goToScene('lvl1');
+		this.addScene('apocalypse', new Apocalypse());
+		this.goToScene('apocalypse');
 	}
 }
 

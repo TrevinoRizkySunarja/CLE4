@@ -9,14 +9,13 @@ class Player extends Actor {
 	}
 
 	onInitialize() {
-		this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
+		this.graphics.use(Resources.PlayerFullHealthDown.toSprite());
 	}
 
 	onPreUpdate(engine) {
+		this.vel.x = -100;
 		this.vel.x = 0;
 		this.vel.y = 0;
-
-		this.graphics.use(Resources.PlayerFullHealthDown.toSprite());
 		if (engine.input.keyboard.isHeld(Keys.S)) {
 			this.vel.y += 80;
 			this.graphics.use(Resources.PlayerFullHealthDown.toSprite());
@@ -28,12 +27,10 @@ class Player extends Actor {
 		if (engine.input.keyboard.isHeld(Keys.D)) {
 			this.vel.x += 80;
 			this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
-			this.graphics.flipHorizontal = false;
 		}
 		if (engine.input.keyboard.isHeld(Keys.A)) {
 			this.vel.x -= 80;
-			this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
-			this.graphics.flipHorizontal = true;
+			this.graphics.use(Resources.PlayerFullHealthLeft.toSprite());
 		}
 	}
 }

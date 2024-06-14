@@ -1,4 +1,4 @@
-import { ImageSource, Sound, Resource, Loader } from 'excalibur';
+import {ImageSource, Sound, Resource, Loader} from 'excalibur';
 
 // voeg hier jouw eigen resources toe
 const Resources = {
@@ -14,4 +14,4 @@ for (let res of Object.values(Resources)) {
 	ResourceLoader.addResource(res);
 }
 
-export { Resources, ResourceLoader };
+export {Resources, ResourceLoader};
