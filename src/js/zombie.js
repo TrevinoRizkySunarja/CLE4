@@ -4,7 +4,7 @@ import {Resources} from './resources';
 class Zombie extends Actor {
 	detectionRange = 250;
 	image;
-	speed = 15;
+	speed = 20;
 
 	constructor(x, y, image) {
 		super({
@@ -22,13 +22,9 @@ class Zombie extends Actor {
 
 	onPreUpdate(engine, delta) {
 		const velocity = this.calculateVelocity(engine);
-		// console.log('velocity: ' + velocity);
-		if (velocity !== 0) {
-			const angleInRadians = this.calculateAngle(engine);
-			this.vel = Vector.fromAngle(angleInRadians).scale(this.speed);
-			console.log('angle: ', angleInRadians);
-			// console.log(Vector.fromAngle(angleInRadians).scale(this.speed));
-		}
+		const angleInRadians = this.calculateAngle(engine);
+		this.vel = Vector.fromAngle(angleInRadians).scale(velocity);
+		console.log('angle: ', angleInRadians);
 	}
 
 	calculateVelocity(engine) {
