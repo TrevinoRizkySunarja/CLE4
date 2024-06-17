@@ -26,8 +26,6 @@ class Apocalypse extends Scene {
 	}
 
 	onActivate() {
-		const ui = new UI
-		this.add(ui)
 		this.add(this.map);
 		this.add(this.player);
 	}
