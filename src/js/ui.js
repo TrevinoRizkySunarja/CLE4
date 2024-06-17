@@ -3,6 +3,7 @@ import { Actor, Keys, Vector, Engine, Label, Font, Color } from "excalibur";
 export class UI extends Actor {
     ammoLabel;
     hpLabel;
+
     onInitialize(engine) {
         this.ammoLabel = new Label({
             text: 'Bullets: 6',
