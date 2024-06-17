@@ -6,6 +6,7 @@ class Lvl1 extends Scene {
 	constructor() {
 		super();
 	}
+
 	onActivate() {
 		this.background = new Actor();
 		this.background.graphics.use(Resources.Background1.toSprite());
