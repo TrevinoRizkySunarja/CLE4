@@ -1,5 +1,5 @@
-import {Zombie} from './zombie';
-import {Resources} from './resources';
+import {Vector} from 'excalibur';
+import {NormalZombie, FatZombie, FastZombie} from './zombie';
 
 const waves = [];
 
@@ -23,7 +23,7 @@ class Wave {
 				this.zombies.push({
 					type: zombieType.type,
 					spawnTime: durationMilliseconds * Math.random(),
-					actor: new zombieType.Actor(spawnPoint.x, spawnPoint.y, Resources.ZombieNormal)
+					actor: new zombieType.Actor(new Vector(spawnPoint.x, spawnPoint.y))
 				});
 			}
 		});
@@ -36,7 +36,7 @@ waves.push(
 		{
 			type: 'normal',
 			amount: 22,
-			Actor: Zombie
+			Actor: NormalZombie
 		}
 	])
 );
@@ -46,12 +46,12 @@ waves.push(
 		{
 			type: 'normal',
 			amount: 24,
-			Actor: Zombie
+			Actor: NormalZombie
 		},
 		{
 			type: 'fat',
 			amount: 2,
-			Actor: Zombie
+			Actor: FatZombie
 		}
 	])
 );
@@ -61,17 +61,17 @@ waves.push(
 		{
 			type: 'normal',
 			amount: 22,
-			Actor: Zombie
+			Actor: NormalZombie
 		},
 		{
 			type: 'fat',
 			amount: 4,
-			Actor: Zombie
+			Actor: FatZombie
 		},
 		{
 			type: 'fast',
 			amount: 4,
-			Actor: Zombie
+			Actor: FastZombie
 		}
 	])
 );

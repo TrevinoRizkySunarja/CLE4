@@ -4,18 +4,18 @@ import {Resources} from './resources';
 class Zombie extends Actor {
 	detectionRange = 380;
 	image;
-	speed = 25;
+	speed;
+	totalDelta = 0;
 
-	constructor(x, y, image) {
+	constructor(pos, image, speed) {
 		super({
-			// pos: new Vector(x, y)
+			pos,
 			width: 10,
 			height: 30
 		});
 		this.image = image;
-		this.pos = new Vector(x, y);
+		this.speed = speed;
 		this.scale = new Vector(1.5, 1.5);
-		this.killed = false;
 	}
 
 	onInitialize(engine, delta) {
@@ -23,8 +23,9 @@ class Zombie extends Actor {
 	}
 
 	onPreUpdate(engine, delta) {
-		const velocity = this.calculateVelocity(engine);
-		const angleInRadians = this.calculateAngle(engine);
+		this.totalDelta += delta;
+		const velocity = this.calculateVelocity(engine) - Math.sin(this.totalDelta / 250) * 4;
+		const angleInRadians = this.calculateAngle(engine) - Math.sin(this.totalDelta / 1000) / 3;
 		this.vel = Vector.fromAngle(angleInRadians).scale(velocity);
 	}
 
@@ -37,10 +38,22 @@ class Zombie extends Actor {
 	}
 }
 
-class NormalZombie extends Zombie {}
+class NormalZombie extends Zombie {
+	constructor(pos) {
+		super(pos, Resources.ZombieNormal, 25);
+	}
+}
 
-class FatZombie extends Zombie {}
+class FatZombie extends Zombie {
+	constructor(pos) {
+		super(pos, Resources.ZombieFat, 12);
+	}
+}
 
-class FastZombie extends Zombie {}
+class FastZombie extends Zombie {
+	constructor(pos) {
+		super(pos, Resources.ZombieFast, 45);
+	}
+}
 
-export {Zombie};
+export {Zombie, NormalZombie, FatZombie, FastZombie};
