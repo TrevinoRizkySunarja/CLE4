@@ -12,11 +12,9 @@ class Zombie extends Actor {
 		});
 		this.image = image;
 		this.pos = new Vector(x, y);
-		// console.log(x, this.pos, this.speed);
 	}
 
 	onInitialize(engine, delta) {
-		console.log(this.position);
 		this.graphics.use(Resources.ZombieNormal.toSprite());
 	}
 
@@ -24,11 +22,9 @@ class Zombie extends Actor {
 		const velocity = this.calculateVelocity(engine);
 		const angleInRadians = this.calculateAngle(engine);
 		this.vel = Vector.fromAngle(angleInRadians).scale(velocity);
-		console.log('angle: ', angleInRadians);
 	}
 
 	calculateVelocity(engine) {
-		// console.log('distance', engine.currentScene.player.getDistance(this.pos.x, this.pos.y), engine.currentScene.player.pos);
 		return engine.currentScene.player.getDistance(this.pos.x, this.pos.y) <= this.detectionRange ? this.speed : 0;
 	}
 
