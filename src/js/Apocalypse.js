@@ -2,10 +2,12 @@ import {Scene, Vector} from 'excalibur';
 import {Player} from './player';
 import {Map} from './map';
 import {getWaveData} from './waves';
+import {Zombie} from './zombie';
+import {Resources} from './resources';
 
 class Apocalypse extends Scene {
 	map = new Map();
-	player = new Player({pos: new Vector(0, 0)});
+	player;
 	zombies = [];
 
 	// wave properties
@@ -14,6 +16,7 @@ class Apocalypse extends Scene {
 
 	constructor() {
 		super();
+		this.player = new Player({pos: new Vector(0, 0)});
 	}
 
 	onInitialize() {
@@ -23,6 +26,8 @@ class Apocalypse extends Scene {
 	onActivate() {
 		this.add(this.map);
 		this.add(this.player);
+		const newZombie = new Zombie(100, 100, Resources.ZombieNormal);
+		this.add(newZombie);
 	}
 
 	onDeactivate() {
@@ -42,7 +47,7 @@ class Apocalypse extends Scene {
 		// Preparation countdown
 		if (this.wave.preparationMilliseconds > 0) {
 			this.wave.preparationMilliseconds = Math.max(this.wave.preparationMilliseconds - delta, 0);
-			console.log(`${this.wave.title} in ${(this.wave.preparationMilliseconds / 1000).toFixed(1)}s`);
+			// console.log(`${this.wave.title} in ${(this.wave.preparationMilliseconds / 1000).toFixed(1)}s`);
 			if (this.wave.preparationMilliseconds === 0) console.log(`${this.wave.title} incoming!`);
 			return;
 		}

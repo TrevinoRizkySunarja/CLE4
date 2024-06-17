@@ -53,6 +53,23 @@ class Player extends Actor {
 		}
 		this.prevSpacePressed = spacePressed;
 	}
+
+	getDistance(x, y) {
+		// console.log('other.x: ' + x);
+		const deltaX = x - this.pos.x;
+		const deltaY = y - this.pos.y;
+
+		console.log('deltaX: ', deltaX, 'deltaY', deltaY);
+
+		return Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+	}
+
+	getAngle(x, y) {
+		const deltaX = this.pos.x - x;
+		const deltaY = this.pos.y - y;
+
+		return Math.atan2(deltaY, deltaX);
+	}
 }
 
 export {Player};
