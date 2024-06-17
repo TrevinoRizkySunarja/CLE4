@@ -1,10 +1,10 @@
-import {Scene, Vector} from 'excalibur';
-import {Player} from './player';
-import {Map} from './map';
-import {getWaveData} from './waves';
-import {Zombie} from './zombie';
-import {Resources} from './resources';
-import {UI} from './ui';
+import { Scene, Vector } from 'excalibur';
+import { Player } from './player';
+import { Map } from './map';
+import { getWaveData } from './waves';
+import { Zombie } from './zombie';
+import { Resources } from './resources';
+import { UI } from './ui';
 
 class Apocalypse extends Scene {
 	map = new Map();
@@ -18,7 +18,7 @@ class Apocalypse extends Scene {
 
 	constructor() {
 		super();
-		this.player = new Player({pos: new Vector(0, 0)});
+		this.player = new Player({ pos: new Vector(0, 0) });
 	}
 
 	onInitialize() {
@@ -26,8 +26,6 @@ class Apocalypse extends Scene {
 	}
 
 	onActivate() {
-		const ui = new UI();
-		this.add(ui);
 		this.add(this.map);
 		this.add(this.player);
 	}
@@ -76,4 +74,4 @@ class Apocalypse extends Scene {
 	}
 }
 
-export {Apocalypse};
+export { Apocalypse };

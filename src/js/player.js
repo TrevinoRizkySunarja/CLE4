@@ -13,11 +13,12 @@ class Player extends Actor {
 		super();
 		this.pos = pos;
 		this.scale = new Vector(1.5, 1.5);
-		this.ui = new UI()
 	}
 
 	onInitialize() {
 		this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
+		this.ui = new UI()
+		this.addChild(this.ui)
 		const pistol = new Pistol();
 		this.addChild(pistol);
 
@@ -25,7 +26,6 @@ class Player extends Actor {
 
 	onPreUpdate(engine) {
 		this.bulletSpeed = 500;
-		this.ui.updatePosition(this.pos.x, this.pos.y)
 		let vX = 0;
 		let vY = 0;
 
