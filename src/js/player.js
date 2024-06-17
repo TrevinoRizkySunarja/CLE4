@@ -4,6 +4,7 @@ import {Pistol} from './pistol';
 import {Bullet} from './bullet';
 
 class Player extends Actor {
+	ammo = 6;
 	constructor({pos}) {
 		super();
 		this.pos = pos;
@@ -50,10 +51,19 @@ class Player extends Actor {
 		else this.vel = Vector.fromAngle(Math.atan2(vY, vX)).scale(80);
 
 		const spacePressed = engine.input.keyboard.isHeld(Keys.Space);
+		if (engine.input.keyboard.isHeld(Keys.R)) {
+			setTimeout(() => {
+				console.log('reload');
+				this.ammo = 6;
+			}, 1000);
+		}
 
-		if (spacePressed && !this.prevSpacePressed) {
+		if (spacePressed && !this.prevSpacePressed && this.ammo > 0) {
+			console.log('space');
+			this.ammo--;
 			const bullet = new Bullet(this.pos.x, this.pos.y, this.bulletSpeedX, this.bulletSpeedY);
 			engine.add(bullet);
+			this.canShoot = false;
 		}
 		this.prevSpacePressed = spacePressed;
 	}
