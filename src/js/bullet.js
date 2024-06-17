@@ -17,7 +17,7 @@ export class Bullet extends Actor {
 	hitEnemy(event) {
 		if (event.other instanceof Zombie) {
 			this.kill();
-			event.other.kill();
+			event.other.getHit();
 		}
 	}
 }
