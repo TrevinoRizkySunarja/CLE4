@@ -1,26 +1,31 @@
-import { Actor, Keys, Vector } from 'excalibur';
+import { Actor, Engine, Keys, Vector } from 'excalibur';
 import { Resources } from './resources';
 import { Pistol } from './pistol';
 import { Bullet } from './bullet';
+import { UI } from './ui';
 
 class Player extends Actor {
 	ammo = 6;
+	ui;
 	constructor({ pos }) {
 		super();
 		this.pos = pos;
 		this.scale = new Vector(1.5, 1.5);
+		this.ui = new UI()
 	}
 
 	onInitialize() {
 		this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
 		const pistol = new Pistol();
 		this.addChild(pistol);
+
 	}
 
 	onPreUpdate(engine) {
 		this.vel.x = 0;
 		this.vel.y = 0;
 		this.bulletSpeed = 500;
+		this.ui.updatePosition(this.pos.x, this.pos.y)
 		if (engine.input.keyboard.isHeld(Keys.S)) {
 			this.vel.y += 80;
 			this.graphics.use(Resources.PlayerFullHealthDown.toSprite());
@@ -59,8 +64,8 @@ class Player extends Actor {
 			const bullet = new Bullet(this.pos.x, this.pos.y, this.bulletSpeedX, this.bulletSpeedY);
 			engine.add(bullet);
 			this.canShoot = false;
-
 		}
+
 		this.prevSpacePressed = spacePressed;
 	}
 
