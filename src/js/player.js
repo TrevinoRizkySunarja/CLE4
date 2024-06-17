@@ -6,7 +6,7 @@ import { UI } from './ui';
 
 
 class Player extends Actor {
-	ammo = 6;
+	ammo = 10;
 	ui;
 
 	constructor({ pos }) {
@@ -28,7 +28,6 @@ class Player extends Actor {
 		this.bulletSpeed = 500;
 		let vX = 0;
 		let vY = 0;
-
 		if (engine.input.keyboard.isHeld(Keys.S)) {
 			vY += 80;
 			this.graphics.use(Resources.PlayerFullHealthDown.toSprite());
@@ -58,9 +57,10 @@ class Player extends Actor {
 		else this.vel = Vector.fromAngle(Math.atan2(vY, vX)).scale(80);
 
 		const spacePressed = engine.input.keyboard.isHeld(Keys.Space);
-		if (engine.input.keyboard.isHeld(Keys.R)) {
+		if (engine.input.keyboard.isHeld(Keys.R) && this.ammo == 0) {
 			setTimeout(() => {
-				this.ammo = 6;
+				this.ammo = 10;
+				this.ui.updateAmmo(`Bullets: ${this.ammo}`)
 			}, 1000);
 		}
 
@@ -68,9 +68,11 @@ class Player extends Actor {
 			this.ammo--;
 			const bullet = new Bullet(this.pos.x, this.pos.y, this.bulletSpeedX, this.bulletSpeedY);
 			engine.add(bullet);
-			this.canShoot = false;
+			this.ui.updateAmmo(`Bullets: ${this.ammo}`)
 		}
-
+		if (spacePressed && !this.prevSpacePressed && this.ammo == 0) {
+			this.ui.updateAmmo("Reload!")
+		}
 		this.prevSpacePressed = spacePressed;
 	}
 

@@ -1,4 +1,4 @@
-import {ImageSource, Sound, Resource, Loader} from 'excalibur';
+import { ImageSource, Sound, Resource, Loader } from 'excalibur';
 
 // voeg hier jouw eigen resources toe
 const Resources = {
@@ -13,7 +13,7 @@ const Resources = {
 	Bullet: new ImageSource('images/bullet.png'),
 	ZombieNormal: new ImageSource('images/zombie.png'),
 	ZombieFat: new ImageSource('images/fatZombie.png'),
-	ZombieFast: new ImageSource('images/zombie2.png')
+	ZombieFast: new ImageSource('images/fastZombie.png')
 };
 
 const ResourceLoader = new Loader();
@@ -21,4 +21,4 @@ for (let res of Object.values(Resources)) {
 	ResourceLoader.addResource(res);
 }
 
-export {Resources, ResourceLoader};
+export { Resources, ResourceLoader };
