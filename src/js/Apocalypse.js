@@ -10,6 +10,7 @@ class Apocalypse extends Scene {
 	map = new Map();
 	player;
 	zombies = [];
+	previousDelta = 0;
 
 	// wave properties
 	currentWaveIndex = 0;
@@ -29,8 +30,6 @@ class Apocalypse extends Scene {
 		this.add(ui)
 		this.add(this.map);
 		this.add(this.player);
-		const newZombie = new Zombie(100, 100, Resources.ZombieNormal);
-		this.add(newZombie);
 	}
 
 	onDeactivate() {
@@ -50,7 +49,7 @@ class Apocalypse extends Scene {
 		// Preparation countdown
 		if (this.wave.preparationMilliseconds > 0) {
 			this.wave.preparationMilliseconds = Math.max(this.wave.preparationMilliseconds - delta, 0);
-			// console.log(`${this.wave.title} in ${(this.wave.preparationMilliseconds / 1000).toFixed(1)}s`);
+			console.log(`${this.wave.title} in ${(this.wave.preparationMilliseconds / 1000).toFixed(1)}s`);
 			if (this.wave.preparationMilliseconds === 0) console.log(`${this.wave.title} incoming!`);
 			return;
 		}
@@ -58,6 +57,10 @@ class Apocalypse extends Scene {
 		// Wave countdown
 		this.wave.durationMilliseconds = Math.max(this.wave.durationMilliseconds - delta, 0);
 		console.log((this.wave.durationMilliseconds / 1000).toFixed(1));
+
+		this.wave.zombies.forEach((zombie) => {
+			if (zombie.spawnTime > this.wave.durationMilliseconds && zombie.spawnTime < this.wave.durationMilliseconds + this.previousDelta) this.add(zombie.actor);
+		});
 
 		if (this.wave.durationMilliseconds === 0) {
 			console.log(`${this.wave.title} survived!`);
@@ -69,6 +72,7 @@ class Apocalypse extends Scene {
 			// if is final wave:
 			this.wave = null;
 		}
+		this.previousDelta = delta;
 	}
 }
 
