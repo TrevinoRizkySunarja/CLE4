@@ -2,8 +2,6 @@ import {Scene, Vector} from 'excalibur';
 import {Player} from './player';
 import {Map} from './map';
 import {getWaveData} from './waves';
-import {Zombie} from './zombie';
-import {Resources} from './resources';
 
 class Apocalypse extends Scene {
 	map = new Map();

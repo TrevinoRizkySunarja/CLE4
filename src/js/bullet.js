@@ -18,7 +18,6 @@ export class Bullet extends Actor {
 		if (event.other instanceof Zombie) {
 			this.kill();
 			event.other.kill();
-			event.other.killed = true;
 		}
 	}
 }
