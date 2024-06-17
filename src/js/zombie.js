@@ -1,5 +1,5 @@
-import {Actor, Vector} from 'excalibur';
-import {Resources} from './resources';
+import { Actor, Vector } from 'excalibur';
+import { Resources } from './resources';
 
 class Zombie extends Actor {
 	detectionRange = 250;
@@ -9,6 +9,7 @@ class Zombie extends Actor {
 	constructor(x, y, image) {
 		super({
 			// pos: new Vector(x, y)
+			width: 10, height: 30
 		});
 		this.image = image;
 		this.pos = new Vector(x, y);
@@ -37,10 +38,10 @@ class Zombie extends Actor {
 	}
 }
 
-class NormalZombie extends Zombie {}
+class NormalZombie extends Zombie { }
 
-class FatZombie extends Zombie {}
+class FatZombie extends Zombie { }
 
-class FastZombie extends Zombie {}
+class FastZombie extends Zombie { }
 
-export {Zombie};
+export { Zombie };

@@ -1,5 +1,6 @@
 import { Actor, Keys, Vector } from "excalibur"
 import { Resources } from "./resources"
+import { Zombie } from "./zombie"
 
 export class Bullet extends Actor {
     constructor(x, y, bulletSpeedX, bulletSpeedY, minusX, minusY) {
@@ -11,5 +12,12 @@ export class Bullet extends Actor {
     onInitialize() {
         this.graphics.use(Resources.Bullet.toSprite())
         this.scale = new Vector(1, 1)
+        this.on('collisionstart', (event) => this.hitEnemy(event))
+    }
+    hitEnemy(event) {
+        if (event.other instanceof Zombie) {
+            this.kill()
+            event.other.kill()
+        }
     }
 }
