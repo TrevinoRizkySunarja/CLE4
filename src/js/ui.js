@@ -5,19 +5,19 @@ export class UI extends Actor {
     hpLabel;
     onInitialize(engine) {
         this.ammoLabel = new Label({
-            text: 'ammo 0',
+            text: 'Bullets: 6',
             font: new Font({
                 family: 'impact',
                 size: 24,
-                color: Color.Red
+                color: Color.Black
             }),
-            pos: new Vector(100, 100)
+            pos: new Vector(-250, -150)
 
         });
         this.addChild(this.ammoLabel)
     }
-    updateScore(ammo) {
-        this.ammoLabel.text = `ammo ${ammo}`;
+    updateAmmo(ammo) {
+        this.ammoLabel.text = `${ammo}`;
     }
 
 }

@@ -61,6 +61,7 @@ class Player extends Actor {
 		if (engine.input.keyboard.isHeld(Keys.R)) {
 			setTimeout(() => {
 				this.ammo = 6;
+				this.ui.updateAmmo(`Bullets: ${this.ammo}`)
 			}, 1000);
 		}
 
@@ -68,9 +69,12 @@ class Player extends Actor {
 			this.ammo--;
 			const bullet = new Bullet(this.pos.x, this.pos.y, this.bulletSpeedX, this.bulletSpeedY);
 			engine.add(bullet);
+			this.ui.updateAmmo(`Bullets: ${this.ammo}`)
 			this.canShoot = false;
 		}
-
+		if (spacePressed && !this.prevSpacePressed && this.ammo == 0) {
+			this.ui.updateAmmo("Reload!")
+		}
 		this.prevSpacePressed = spacePressed;
 	}
 
