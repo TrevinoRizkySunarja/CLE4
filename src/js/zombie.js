@@ -1,22 +1,25 @@
-import { Actor, Vector } from 'excalibur';
-import { Resources } from './resources';
+import {Actor, Vector} from 'excalibur';
+import {Resources} from './resources';
 
 class Zombie extends Actor {
-	detectionRange = 250;
+	detectionRange = 380;
 	image;
-	speed = 20;
+	speed = 25;
 
 	constructor(x, y, image) {
 		super({
 			// pos: new Vector(x, y)
-			width: 10, height: 30
+			width: 10,
+			height: 30
 		});
 		this.image = image;
 		this.pos = new Vector(x, y);
+		this.scale = new Vector(1.5, 1.5);
+		this.killed = false;
 	}
 
 	onInitialize(engine, delta) {
-		this.graphics.use(Resources.ZombieNormal.toSprite());
+		this.graphics.use(this.image.toSprite());
 	}
 
 	onPreUpdate(engine, delta) {
@@ -34,10 +37,10 @@ class Zombie extends Actor {
 	}
 }
 
-class NormalZombie extends Zombie { }
+class NormalZombie extends Zombie {}
 
-class FatZombie extends Zombie { }
+class FatZombie extends Zombie {}
 
-class FastZombie extends Zombie { }
+class FastZombie extends Zombie {}
 
-export { Zombie };
+export {Zombie};
