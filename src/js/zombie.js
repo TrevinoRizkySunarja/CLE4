@@ -46,13 +46,13 @@ class NormalZombie extends Zombie {
 
 class FatZombie extends Zombie {
 	constructor(pos) {
-		super(pos, Resources.ZombieNormal, 12);
+		super(pos, Resources.ZombieFat, 12);
 	}
 }
 
 class FastZombie extends Zombie {
 	constructor(pos) {
-		super(pos, Resources.ZombieNormal, 45);
+		super(pos, Resources.ZombieFast, 45);
 	}
 }
 

@@ -11,7 +11,9 @@ const Resources = {
 	PistolLeft: new ImageSource('images/pistolLeft.png'),
 	PistolUp: new ImageSource('images/pistolUp.png'),
 	Bullet: new ImageSource('images/bullet.png'),
-	ZombieNormal: new ImageSource('images/zombie.png')
+	ZombieNormal: new ImageSource('images/zombie.png'),
+	ZombieFat: new ImageSource('images/fatZombie.png'),
+	ZombieFast: new ImageSource('images/zombie2.png')
 };
 
 const ResourceLoader = new Loader();
