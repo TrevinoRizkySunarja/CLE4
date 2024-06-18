@@ -1,6 +1,10 @@
 import {Actor, Vector} from 'excalibur';
 import {Resources} from './resources';
 
+const zombieNormalSprite = Resources.ZombieNormal.toSprite();
+const zombieFatSprite = Resources.ZombieFat.toSprite();
+const zombieFastSprite = Resources.ZombieFast.toSprite();
+
 class Zombie extends Actor {
 	detectionRange = 380;
 	image;
@@ -23,7 +27,7 @@ class Zombie extends Actor {
 	}
 
 	onInitialize(engine, delta) {
-		this.graphics.use(this.image.toSprite());
+		this.graphics.use(this.image);
 	}
 
 	onPreUpdate(engine, delta) {
@@ -52,19 +56,19 @@ class Zombie extends Actor {
 
 class NormalZombie extends Zombie {
 	constructor(pos) {
-		super(pos, Resources.ZombieNormal, 25, 2);
+		super(pos, zombieNormalSprite, 25, 2);
 	}
 }
 
 class FatZombie extends Zombie {
 	constructor(pos) {
-		super(pos, Resources.ZombieFat, 12, 6);
+		super(pos, zombieFatSprite, 12, 6);
 	}
 }
 
 class FastZombie extends Zombie {
 	constructor(pos) {
-		super(pos, Resources.ZombieFast, 60, 1);
+		super(pos, zombieFastSprite, 60, 1);
 	}
 }
 
