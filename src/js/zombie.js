@@ -47,6 +47,7 @@ class Zombie extends Actor {
 
 	getHit() {
 		this.currentHealth--;
+		Resources.ZombieHurt.play();
 	}
 }
 
