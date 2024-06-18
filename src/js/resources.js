@@ -13,8 +13,14 @@ const Resources = {
 	Bullet: new ImageSource('images/bullet.png'),
 	ZombieNormal: new ImageSource('images/zombie.png'),
 	ZombieFat: new ImageSource('images/fatZombie.png'),
-	ZombieFast: new ImageSource('images/fastZombie.png')
+	ZombieFast: new ImageSource('images/fastZombie.png'),
+	PlayerHurt: new Sound('sounds/player_hurt.mp3'),
+	ZombieHurt: new Sound('sounds/zombie_hurt.mp3')
 };
+
+
+
+
 
 const ResourceLoader = new Loader();
 for (let res of Object.values(Resources)) {
