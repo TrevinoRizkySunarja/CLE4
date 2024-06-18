@@ -7,7 +7,6 @@ import { UI } from './ui';
 
 class Player extends Actor {
 	ammo = 10;
-	ui;
 
 	constructor({ pos }) {
 		super();

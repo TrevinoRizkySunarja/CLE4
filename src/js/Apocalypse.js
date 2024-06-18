@@ -19,6 +19,7 @@ class Apocalypse extends Scene {
 	constructor() {
 		super();
 		this.player = new Player({ pos: new Vector(0, 0) });
+		this.ui = new UI;
 	}
 
 	onInitialize() {
@@ -43,7 +44,6 @@ class Apocalypse extends Scene {
 
 	onPreUpdate(engine, delta) {
 		if (!this.wave) return;
-
 		// Preparation countdown
 		if (this.wave.preparationMilliseconds > 0) {
 			this.wave.preparationMilliseconds = Math.max(this.wave.preparationMilliseconds - delta, 0);
@@ -55,6 +55,7 @@ class Apocalypse extends Scene {
 		// Wave countdown
 		this.wave.durationMilliseconds = Math.max(this.wave.durationMilliseconds - delta, 0);
 		console.log((this.wave.durationMilliseconds / 1000).toFixed(1));
+
 
 		this.wave.zombies.forEach((zombie) => {
 			if (zombie.spawnTime > this.wave.durationMilliseconds && zombie.spawnTime < this.wave.durationMilliseconds + this.previousDelta) this.add(zombie.actor);
