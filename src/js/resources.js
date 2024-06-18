@@ -11,9 +11,23 @@ const Resources = {
 	PistolLeft: new ImageSource('images/pistolLeft.png'),
 	PistolUp: new ImageSource('images/pistolUp.png'),
 	Bullet: new ImageSource('images/bullet.png'),
-	ZombieNormal: new ImageSource('images/zombies/zombie.png'),
-	ZombieFat: new ImageSource('images/zombies/fatZombie.png'),
-	ZombieFast: new ImageSource('images/zombies/fastZombie.png'),
+
+
+	ZombieNormal: new ImageSource('images/zombies/zombieRight.png'),
+	ZombieNormalLeft: new ImageSource('images/zombies/zombieLeft.png'),
+	ZombieNormalUp: new ImageSource('images/zombies/zombieUp.png'),
+	ZombieNormalDown: new ImageSource('images/zombies/zombieDown.png'),
+
+	ZombieFat: new ImageSource('images/zombies/fatZombieRight.png'),
+	ZombieFatLeft: new ImageSource('images/zombies/fatZombieLeft.png'),
+	ZombieFatUp: new ImageSource('images/zombies/fatZombieUp.png'),
+	ZombieFatDown: new ImageSource('images/zombies/fatZombieDown.png'),
+
+	ZombieFast: new ImageSource('images/zombies/fastZombieRight.png'),
+	ZombieFastLeft: new ImageSource('images/zombies/fastZombieLeft.png'),
+	ZombieFastUp: new ImageSource('images/zombies/fastZombieUp.png'),
+	ZombieFastDown: new ImageSource('images/zombies/fastZombieDown.png'),
+
 	PlayerHurt: new Sound('sounds/player_hurt.mp3'),
 	ZombieHurt: new Sound('sounds/zombie_hurt.mp3')
 };

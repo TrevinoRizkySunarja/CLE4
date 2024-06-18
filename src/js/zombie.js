@@ -1,5 +1,5 @@
-import {Actor, Vector} from 'excalibur';
-import {Resources} from './resources';
+import { Actor, Vector } from 'excalibur';
+import { Resources } from './resources';
 
 const zombieNormalSprite = Resources.ZombieNormal.toSprite();
 const zombieFatSprite = Resources.ZombieFat.toSprite();
@@ -73,4 +73,4 @@ class FastZombie extends Zombie {
 	}
 }
 
-export {Zombie, NormalZombie, FatZombie, FastZombie};
+export { Zombie, NormalZombie, FatZombie, FastZombie };
