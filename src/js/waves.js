@@ -32,7 +32,7 @@ class Wave {
 }
 
 waves.push(
-	new Wave('Wave 1', 5 * 1000, 20 * 1000, [
+	new Wave('Wave 1', 3 * 1000, 15 * 1000, [
 		{
 			type: 'normal',
 			amount: 22,
@@ -42,7 +42,7 @@ waves.push(
 );
 
 waves.push(
-	new Wave('Wave 2', 20 * 1000, 30 * 1000, [
+	new Wave('Wave 2', 20 * 1000, 20 * 1000, [
 		{
 			type: 'normal',
 			amount: 24,
@@ -57,7 +57,7 @@ waves.push(
 );
 
 waves.push(
-	new Wave('Wave 3', 20 * 1000, 40 * 1000, [
+	new Wave('Wave 3', 20 * 1000, 30 * 1000, [
 		{
 			type: 'normal',
 			amount: 22,
