@@ -55,7 +55,6 @@ class Apocalypse extends Scene {
 		// Wave countdown
 		this.wave.durationMilliseconds = Math.max(this.wave.durationMilliseconds - delta, 0);
 		console.log((this.wave.durationMilliseconds / 1000).toFixed(1));
-		this.time = this.wave.durationMilliseconds
 
 		this.wave.zombies.forEach((zombie) => {
 			if (zombie.spawnTime > this.wave.durationMilliseconds && zombie.spawnTime < this.wave.durationMilliseconds + this.previousDelta) this.add(zombie.actor);

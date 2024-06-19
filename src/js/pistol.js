@@ -9,12 +9,13 @@ export class Pistol extends Actor {
 		super();
 		this.pos = new Vector(15, -3);
 		this.scale = new Vector(0.8, 0.8);
-		this.graphics.use(Resources.PistolRight.toSprite());
+		this.graphics.use(Resources.PistolRight.toSprite());	//De start image van de pistol
 	}
 	onInitialize() {
 		this.ui = new UI();
 	}
 	onPreUpdate(engine) {
+		//De richting veranderen van pistol met de ingedrukte knop
 		if (engine.input.keyboard.isHeld(Keys.S)) {
 			this.graphics.use(Resources.PistolUp.toSprite());
 			this.pos = new Vector(5.5, -3);
