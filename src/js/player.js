@@ -4,6 +4,7 @@ import { Pistol } from './pistol';
 import { Bullet } from './bullet';
 import { UI } from './ui';
 import { Zombie } from './zombie';
+import { Game } from './game';
 
 
 class Player extends Actor {
