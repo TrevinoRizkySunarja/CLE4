@@ -6,7 +6,7 @@ const zombieFatSprite = Resources.ZombieFat.toSprite();
 const zombieFastSprite = Resources.ZombieFast.toSprite();
 
 class Zombie extends Actor {
-	detectionRange = 380;
+	detectionRange = 1500;
 	image;
 	speed;
 	totalDelta = 0;
@@ -37,10 +37,6 @@ class Zombie extends Actor {
 		this.vel = Vector.fromAngle(angleInRadians).scale(velocity);
 	}
 
-	onPostUpdate() {
-		if (this.currentHealth <= 0) this.kill();
-	}
-
 	calculateVelocity(engine) {
 		return engine.currentScene.player.getDistance(this.pos.x, this.pos.y) <= this.detectionRange ? this.speed : 0;
 	}
@@ -51,7 +47,13 @@ class Zombie extends Actor {
 
 	getHit() {
 		this.currentHealth--;
-		Resources.ZombieHurt.play();
+
+		if (this.currentHealth <= 0) {
+			Resources.ZombieDies.play(0.25);
+			this.kill();
+			return;
+		}
+		Resources.ZombieGetsHit.play(0.2);
 	}
 }
 

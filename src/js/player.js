@@ -1,15 +1,15 @@
-import { Actor, Engine, Keys, Vector } from 'excalibur';
-import { Resources } from './resources';
-import { Pistol } from './pistol';
-import { Bullet } from './bullet';
-import { UI } from './ui';
-
+import {Actor, Engine, Keys, Vector} from 'excalibur';
+import {Resources} from './resources';
+import {Pistol} from './pistol';
+import {Bullet} from './bullet';
+import {UI} from './ui';
 
 class Player extends Actor {
-	ammo = 10;
 	ui;
+	bulletDirection = new Vector(1, 0);
+	speed = 70;
 
-	constructor({ pos }) {
+	constructor({pos}) {
 		super();
 		this.pos = pos;
 		this.scale = new Vector(1.5, 1.5);
@@ -17,61 +17,57 @@ class Player extends Actor {
 
 	onInitialize() {
 		this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
-		this.ui = new UI()
-		this.addChild(this.ui)
-		const pistol = new Pistol();
-		this.addChild(pistol);
-
+		this.ui = new UI();
+		this.addChild(this.ui);
+		this.pistol = new Pistol();
+		this.addChild(this.pistol);
 	}
 
-	onPreUpdate(engine) {
-		this.bulletSpeed = 500;
+	onPreUpdate(engine, delta) {
 		let vX = 0;
 		let vY = 0;
 		if (engine.input.keyboard.isHeld(Keys.S)) {
-			vY += 80;
+			vY += this.speed;
 			this.graphics.use(Resources.PlayerFullHealthDown.toSprite());
-			this.bulletSpeedX = 0;
-			this.bulletSpeedY = this.bulletSpeed;
+			this.bulletDirection.setTo(0, 1);
 		}
 		if (engine.input.keyboard.isHeld(Keys.W)) {
-			vY -= 80;
+			vY -= this.speed;
 			this.graphics.use(Resources.PlayerFullHealthUp.toSprite());
-			this.bulletSpeedX = 0;
-			this.bulletSpeedY = -this.bulletSpeed;
+			this.bulletDirection.setTo(0, -1);
 		}
 		if (engine.input.keyboard.isHeld(Keys.D)) {
-			vX += 80;
+			vX += this.speed;
 			this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
-			this.bulletSpeedX = this.bulletSpeed;
-			this.bulletSpeedY = 0;
+			this.bulletDirection.setTo(1, 0);
 		}
 		if (engine.input.keyboard.isHeld(Keys.A)) {
-			vX -= 80;
+			vX -= this.speed;
 			this.graphics.use(Resources.PlayerFullHealthLeft.toSprite());
-			this.bulletSpeedX = -this.bulletSpeed;
-			this.bulletSpeedY = 0;
+			this.bulletDirection.setTo(-1, 0);
 		}
 
 		if (vX === 0 && vY === 0) this.vel = new Vector(0, 0);
 		else this.vel = Vector.fromAngle(Math.atan2(vY, vX)).scale(80);
 
 		const spacePressed = engine.input.keyboard.isHeld(Keys.Space);
-		if (engine.input.keyboard.isHeld(Keys.R) && this.ammo == 0) {
-			setTimeout(() => {
-				this.ammo = 10;
-				this.ui.updateAmmo(`Bullets: ${this.ammo}`)
-			}, 1000);
+		if (engine.input.keyboard.isHeld(Keys.R)) {
+			this.pistol.reload(engine.currentScene);
+
+			// Resources.Reloading.play(0.5);
+			// setTimeout(() => {
+			// 	this.ammo = 10;
+			// 	this.ui.updateAmmo(`Bullets: ${this.ammo}`);
+			// }, 2000);
 		}
 
-		if (spacePressed && !this.prevSpacePressed && this.ammo > 0) {
-			this.ammo--;
-			const bullet = new Bullet(this.pos.x, this.pos.y, this.bulletSpeedX, this.bulletSpeedY);
-			engine.add(bullet);
-			this.ui.updateAmmo(`Bullets: ${this.ammo}`)
-		}
-		if (spacePressed && !this.prevSpacePressed && this.ammo == 0) {
-			this.ui.updateAmmo("Reload!")
+		if (spacePressed && !this.prevSpacePressed) {
+			this.pistol.shoot(engine.currentScene, this.bulletDirection);
+
+			// this.this.ammo--;
+			// const bullet = new Bullet(this.pos.x, this.pos.y, this.bulletSpeedX, this.bulletSpeedY);
+			// engine.add(bullet);
+			// this.ui.updateAmmo(`Bullets: ${this.ammo}`);
 		}
 		this.prevSpacePressed = spacePressed;
 	}
@@ -91,4 +87,4 @@ class Player extends Actor {
 	}
 }
 
-export { Player };
+export {Player};

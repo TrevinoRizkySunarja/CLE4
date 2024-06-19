@@ -4,10 +4,10 @@ import {NormalZombie, FatZombie, FastZombie} from './zombie';
 const waves = [];
 
 const spawnPoints = [
-	{x: -320, y: 0},
-	{x: 320, y: 0},
-	{x: 0, y: 320},
-	{x: 0, y: -320}
+	{x: -550, y: 550},
+	{x: 550, y: -550},
+	{x: 550, y: 550},
+	{x: -550, y: -550}
 ];
 
 class Wave {
@@ -32,45 +32,45 @@ class Wave {
 }
 
 waves.push(
-	new Wave('Wave 1', 3 * 1000, 15 * 1000, [
+	new Wave('Wave 1', 3 * 1000, 30 * 1000, [
 		{
 			type: 'normal',
-			amount: 22,
+			amount: 40,
 			Actor: NormalZombie
 		}
 	])
 );
 
 waves.push(
-	new Wave('Wave 2', 20 * 1000, 20 * 1000, [
+	new Wave('Wave 2', 40 * 1000, 40 * 1000, [
 		{
 			type: 'normal',
-			amount: 24,
+			amount: 50,
 			Actor: NormalZombie
 		},
 		{
 			type: 'fat',
-			amount: 2,
+			amount: 8,
 			Actor: FatZombie
 		}
 	])
 );
 
 waves.push(
-	new Wave('Wave 3', 20 * 1000, 30 * 1000, [
+	new Wave('Wave 3', 60 * 1000, 60 * 1000, [
 		{
 			type: 'normal',
-			amount: 22,
+			amount: 50,
 			Actor: NormalZombie
 		},
 		{
 			type: 'fat',
-			amount: 4,
+			amount: 6,
 			Actor: FatZombie
 		},
 		{
 			type: 'fast',
-			amount: 4,
+			amount: 12,
 			Actor: FastZombie
 		}
 	])

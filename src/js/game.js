@@ -10,8 +10,8 @@ export class Game extends Engine {
 			width: 800,
 			height: 500,
 			maxFps: 60,
-			displayMode: DisplayMode.FitScreen,
-			suppressPlayButton: true
+			displayMode: DisplayMode.FitScreen
+			// suppressPlayButton: true
 		});
 		this.start(ResourceLoader).then(() => this.startGame());
 	}
