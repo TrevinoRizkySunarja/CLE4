@@ -1,5 +1,4 @@
 import {Actor, Engine, Keys, Vector} from 'excalibur';
-import {Player} from './player';
 import {Resources} from './resources';
 import {Bullet} from './bullet';
 
@@ -16,6 +15,7 @@ export class Pistol extends Actor {
 		this.graphics.use(Resources.PistolRight.toSprite());
 	}
 	onPreUpdate(engine) {
+		//De richting veranderen van pistol met de ingedrukte knop
 		if (engine.input.keyboard.isHeld(Keys.S)) {
 			this.graphics.use(Resources.PistolUp.toSprite());
 			this.pos = new Vector(5.5, -3);

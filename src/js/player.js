@@ -1,16 +1,16 @@
-import {Actor, Engine, Keys, Vector} from 'excalibur';
+import {Actor, Keys, Vector} from 'excalibur';
 import {Resources} from './resources';
 import {Pistol} from './pistol';
-import {Bullet} from './bullet';
 import {UI} from './ui';
 
 class Player extends Actor {
 	ui;
 	bulletDirection = new Vector(1, 0);
 	speed = 70;
+	hp = 10;
 
 	constructor({pos}) {
-		super();
+		super({width: 20, height: 30});
 		this.pos = pos;
 		this.scale = new Vector(1.5, 1.5);
 	}
@@ -19,8 +19,9 @@ class Player extends Actor {
 		this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
 		this.ui = new UI();
 		this.addChild(this.ui);
-		this.pistol = new Pistol();
-		this.addChild(this.pistol);
+		const pistol = new Pistol();
+		this.addChild(pistol);
+		this.on('collisionstart', (event) => this.hitEnemy(event));
 	}
 
 	onPreUpdate(engine, delta) {
@@ -31,16 +32,19 @@ class Player extends Actor {
 			this.graphics.use(Resources.PlayerFullHealthDown.toSprite());
 			this.bulletDirection.setTo(0, 1);
 		}
+		//Naar boven
 		if (engine.input.keyboard.isHeld(Keys.W)) {
 			vY -= this.speed;
 			this.graphics.use(Resources.PlayerFullHealthUp.toSprite());
 			this.bulletDirection.setTo(0, -1);
 		}
+		//Naar rechts
 		if (engine.input.keyboard.isHeld(Keys.D)) {
 			vX += this.speed;
 			this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
 			this.bulletDirection.setTo(1, 0);
 		}
+		//Naar links
 		if (engine.input.keyboard.isHeld(Keys.A)) {
 			vX -= this.speed;
 			this.graphics.use(Resources.PlayerFullHealthLeft.toSprite());
@@ -53,25 +57,22 @@ class Player extends Actor {
 		const spacePressed = engine.input.keyboard.isHeld(Keys.Space);
 		if (engine.input.keyboard.isHeld(Keys.R)) {
 			this.pistol.reload(engine.currentScene);
-
-			// Resources.Reloading.play(0.5);
-			// setTimeout(() => {
-			// 	this.ammo = 10;
-			// 	this.ui.updateAmmo(`Bullets: ${this.ammo}`);
-			// }, 2000);
 		}
 
 		if (spacePressed && !this.prevSpacePressed) {
 			this.pistol.shoot(engine.currentScene, this.bulletDirection);
-
-			// this.this.ammo--;
-			// const bullet = new Bullet(this.pos.x, this.pos.y, this.bulletSpeedX, this.bulletSpeedY);
-			// engine.add(bullet);
-			// this.ui.updateAmmo(`Bullets: ${this.ammo}`);
 		}
 		this.prevSpacePressed = spacePressed;
 	}
 
+	//functie dat detecteert dat de player en zombie elkaar hebben gehit
+	hitEnemy(event) {
+		if (event.other instanceof Zombie) {
+			this.hp--;
+			console.log(this.hp);
+			this.ui.updateHp(this.hp);
+		}
+	}
 	getDistance(x, y) {
 		const deltaX = x - this.pos.x;
 		const deltaY = y - this.pos.y;

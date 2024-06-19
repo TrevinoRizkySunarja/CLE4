@@ -1,4 +1,4 @@
-import { Scene, Vector } from 'excalibur';
+import { Color, Font, Label, Scene, Vector } from 'excalibur';
 import { Player } from './player';
 import { Map } from './map';
 import { getWaveData } from './waves';
@@ -19,6 +19,7 @@ class Apocalypse extends Scene {
 	constructor() {
 		super();
 		this.player = new Player({ pos: new Vector(0, 0) });
+		this.ui = new UI;
 	}
 
 	onInitialize() {
@@ -43,7 +44,6 @@ class Apocalypse extends Scene {
 
 	onPreUpdate(engine, delta) {
 		if (!this.wave) return;
-
 		// Preparation countdown
 		if (this.wave.preparationMilliseconds > 0) {
 			this.wave.preparationMilliseconds = Math.max(this.wave.preparationMilliseconds - delta, 0);
