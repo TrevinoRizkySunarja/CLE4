@@ -2,12 +2,14 @@ import {Actor, Keys, Vector} from 'excalibur';
 import {Resources} from './resources';
 import {Pistol} from './pistol';
 import {UI} from './ui';
+import {Zombie} from './zombie';
 
 class Player extends Actor {
 	ui;
 	bulletDirection = new Vector(1, 0);
 	speed = 70;
 	hp = 10;
+	pistol;
 
 	constructor({pos}) {
 		super({width: 20, height: 30});
@@ -19,8 +21,8 @@ class Player extends Actor {
 		this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
 		this.ui = new UI();
 		this.addChild(this.ui);
-		const pistol = new Pistol();
-		this.addChild(pistol);
+		this.pistol = new Pistol();
+		this.addChild(this.pistol);
 		this.on('collisionstart', (event) => this.hitEnemy(event));
 	}
 
