@@ -2,7 +2,6 @@ import { Actor, Keys, Vector, Engine, Label, Font, Color } from 'excalibur';
 
 export class UI extends Actor {
 	ammoLabel;
-	killsLabel;
 	timeLabel;
 
 	onInitialize(engine) {
@@ -17,17 +16,6 @@ export class UI extends Actor {
 		});
 		this.addChild(this.ammoLabel);
 
-		this.killsLabel = new Label({
-			text: 'Kills: 0',
-			font: new Font({
-				family: 'impact',
-				size: 24,
-				color: Color.Red
-			}),
-			pos: new Vector(-250, -120)
-		});
-		this.addChild(this.killsLabel);
-
 		this.timeLabel = new Label({
 			text: '100',
 			font: new Font({
@@ -38,13 +26,28 @@ export class UI extends Actor {
 			pos: new Vector(-70, -150)
 		});
 		this.addChild(this.timeLabel);
+
+
+		this.hpLabel = new Label({
+			text: 'hp: 5',
+			font: new Font({
+				family: 'impact',
+				size: 24,
+				color: Color.Red
+			}),
+			pos: new Vector(-70, -150)
+		});
+		this.addChild(this.timeLabel);
+
 	}
+
 
 	updateAmmo(ammo) {
 		this.ammoLabel.text = `${ammo}`;
 	}
 	updateTimer(time) {
-		console.log(time)
+		this.timeLabel.text = time;
+
 	}
 
 }
