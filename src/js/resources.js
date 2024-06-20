@@ -15,6 +15,7 @@ const Resources = {
 	ShotungRight: new ImageSource('images/shotungRight.png'),
 	ShotungLeft: new ImageSource('images/shotungLeft.png'),
 	ShotungUp: new ImageSource('images/shotungUp.png'),
+	ShotgunDown: new ImageSource('iamges/shotgunDown.png'),
 	//De kogel
 	Bullet: new ImageSource('images/bullet.png'),
 
