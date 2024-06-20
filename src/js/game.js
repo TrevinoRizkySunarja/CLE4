@@ -28,7 +28,7 @@ export class Game extends Engine {
 		this.addScene('apocalypse', new Apocalypse)
 		setTimeout(() => {
 			this.goToScene('apocalypse')
-		}, 10000);
+		}, 3000);
 
 	}
 }
