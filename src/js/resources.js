@@ -31,7 +31,7 @@ const Resources = {
 	ZombieFastDown: new ImageSource('images/zombies/fastZombieDown.png'),
 
 	StartButton: new ImageSource('images/start.png'),
-	StartBackground: new ImageSource('startbackground.png'),
+	StartBackground: new ImageSource('images/startbackground.png'),
 	Tutorial: new ImageSource('images/tutorial.png'),
 
 	PlayerHurt: new Sound('sounds/player_hurt.mp3'),

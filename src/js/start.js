@@ -19,18 +19,4 @@ export class Start extends Scene {
         this.add(this.zombieImage);
         this.add(this.zombieImage2);
     }
-
-    onActivate() {
-        this.title = new Label({
-            text: 'Zombies Groene Hilledijk',
-            font: new Font({
-                family: 'impact',
-                size: 48,
-                color: Color.Red
-            }),
-            pos: new Vector(165, 100)
-        });
-        this.add(this.title);
-        console.log('aaa');
-    }
 }
