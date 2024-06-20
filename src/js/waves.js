@@ -4,10 +4,10 @@ import {NormalZombie, FatZombie, FastZombie} from './zombie';
 const waves = [];
 
 const spawnPoints = [
-	{x: -550, y: 550},
-	{x: 550, y: -550},
-	{x: 550, y: 550},
-	{x: -550, y: -550}
+	{x: -380, y: 380},
+	{x: 380, y: -380},
+	{x: 380, y: 380},
+	{x: -380, y: -380}
 ];
 
 class Wave {

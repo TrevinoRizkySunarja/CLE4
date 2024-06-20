@@ -8,11 +8,11 @@ class Player extends Actor {
 	ui;
 	bulletDirection = new Vector(1, 0);
 	speed = 70;
-	hp = 10;
+	hp = 3;
 	pistol;
 
 	constructor({pos}) {
-		super({width: 20, height: 30});
+		super({width: 14, height: 30});
 		this.pos = pos;
 		this.scale = new Vector(1.5, 1.5);
 	}
@@ -72,6 +72,7 @@ class Player extends Actor {
 		if (event.other instanceof Zombie) {
 			this.hp--;
 			console.log(this.hp);
+			if (this.hp === 0) this.kill();
 			this.ui.updateHp(this.hp);
 		}
 	}

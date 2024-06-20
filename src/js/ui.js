@@ -1,4 +1,4 @@
-import { Actor, Keys, Vector, Engine, Label, Font, Color } from 'excalibur';
+import {Actor, Keys, Vector, Engine, Label, Font, Color} from 'excalibur';
 
 export class UI extends Actor {
 	//De labels aanmaken
@@ -21,7 +21,7 @@ export class UI extends Actor {
 
 		//De HP
 		this.hpLabel = new Label({
-			text: 'hp: 10',
+			text: 'hp: 3',
 			font: new Font({
 				family: 'impact',
 				size: 24,
@@ -54,5 +54,4 @@ export class UI extends Actor {
 	// updateTimer(time) {
 	//     this.timeLabel.text = `${time}`;
 	// }
-
 }
