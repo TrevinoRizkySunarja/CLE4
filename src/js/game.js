@@ -1,7 +1,9 @@
 import '../css/style.css';
-import {Engine, DisplayMode} from 'excalibur';
-import {ResourceLoader} from './resources.js';
-import {Apocalypse} from './Apocalypse.js';
+import { Engine, DisplayMode, Keys } from 'excalibur';
+import { ResourceLoader } from './resources.js';
+import { Apocalypse } from './Apocalypse.js';
+import { Start } from './start.js';
+import { Tutorial } from './tutorial.js';
 
 export class Game extends Engine {
 	constructor() {
@@ -10,15 +12,24 @@ export class Game extends Engine {
 			width: 800,
 			height: 500,
 			maxFps: 60,
-			displayMode: DisplayMode.FitScreen
-			// suppressPlayButton: true
+			displayMode: DisplayMode.FitScreen,
+			suppressPlayButton: true,
 		});
-		this.start(ResourceLoader).then(() => this.startGame());
+		this.start(ResourceLoader).then(() => this.startIntro());
 	}
 
-	startGame() {
-		this.addScene('apocalypse', new Apocalypse());
-		this.goToScene('apocalypse');
+	startIntro() {
+		this.addScene('start', new Start())
+		this.goToScene('start')
+	}
+	startTutorial(engine) {
+		this.addScene('tutorial', new Tutorial());
+		this.goToScene('tutorial');
+		this.addScene('apocalypse', new Apocalypse)
+		setTimeout(() => {
+			this.goToScene('apocalypse')
+		}, 10000);
+
 	}
 }
 

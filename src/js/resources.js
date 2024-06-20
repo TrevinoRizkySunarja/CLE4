@@ -30,6 +30,9 @@ const Resources = {
 	ZombieFastUp: new ImageSource('images/zombies/fastZombieUp.png'),
 	ZombieFastDown: new ImageSource('images/zombies/fastZombieDown.png'),
 
+	StartButton: new ImageSource('images/start.png'),
+	Tutorial: new ImageSource('images/tutorial.png'),
+
 	PlayerHurt: new Sound('sounds/player_hurt.mp3'),
 	ZombieHurt: new Sound('sounds/zombie_hurt.mp3'),
 	ZombieDies: new Sound('sounds/zombie-dying.mp3'),

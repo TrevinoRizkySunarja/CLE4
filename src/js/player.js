@@ -1,8 +1,11 @@
-import {Actor, Keys, Vector} from 'excalibur';
-import {Resources} from './resources';
-import {Pistol} from './pistol';
-import {UI} from './ui';
-import {Zombie} from './zombie';
+import { Actor, Engine, Keys, Vector } from 'excalibur';
+import { Resources } from './resources';
+import { Pistol } from './pistol';
+import { Bullet } from './bullet';
+import { UI } from './ui';
+import { Zombie } from './zombie';
+import { Game } from './game';
+
 
 class Player extends Actor {
 	ui;
@@ -13,6 +16,8 @@ class Player extends Actor {
 
 	constructor({pos}) {
 		super({width: 14, height: 30});
+	constructor({ pos }) {
+		super({ width: 20, height: 30 });
 		this.pos = pos;
 		this.scale = new Vector(1.5, 1.5);
 	}
@@ -91,4 +96,4 @@ class Player extends Actor {
 	}
 }
 
-export {Player};
+export { Player };
