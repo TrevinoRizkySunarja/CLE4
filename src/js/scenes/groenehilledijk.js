@@ -1,16 +1,13 @@
-import { Color, Font, Label, Scene, Vector } from 'excalibur';
-import { Player } from './player';
-import { Map } from './map';
-import { getWaveData } from './waves';
-import { Zombie } from './zombie';
-import { Resources } from './resources';
-import { UI } from './ui';
+import {Scene, Vector} from 'excalibur';
+import {Player} from '../player';
+import {Map} from '../map';
+import {getWaveData} from '../waves';
+import {UI} from '../ui';
 
-class Apocalypse extends Scene {
+class GroeneHilledijk extends Scene {
 	map = new Map();
 	player;
 	zombies = [];
-	previousDelta = 0;
 
 	// wave properties
 	currentWaveIndex = 0;
@@ -18,8 +15,8 @@ class Apocalypse extends Scene {
 
 	constructor() {
 		super();
-		this.player = new Player({ pos: new Vector(0, 0) });
-		this.ui = new UI;
+		this.player = new Player({pos: new Vector(0, 0)});
+		this.ui = new UI();
 	}
 
 	onInitialize() {
@@ -33,8 +30,6 @@ class Apocalypse extends Scene {
 
 	onDeactivate() {
 		this.clear();
-		this.zombies.forEach((zombie) => zombie.kill());
-		this.zombies = [];
 	}
 
 	goToNextWave() {
@@ -57,7 +52,7 @@ class Apocalypse extends Scene {
 		console.log((this.wave.durationMilliseconds / 1000).toFixed(1));
 
 		this.wave.zombies.forEach((zombie) => {
-			if (zombie.spawnTime > this.wave.durationMilliseconds && zombie.spawnTime < this.wave.durationMilliseconds + this.previousDelta) this.add(zombie.actor);
+			if (zombie.spawnTime < this.wave.durationMilliseconds && zombie.spawnTime > this.wave.durationMilliseconds - delta) this.add(zombie.actor);
 		});
 
 		if (this.wave.durationMilliseconds === 0) {
@@ -70,8 +65,7 @@ class Apocalypse extends Scene {
 			// if is final wave:
 			this.wave = null;
 		}
-		this.previousDelta = delta;
 	}
 }
 
-export { Apocalypse };
+export {GroeneHilledijk};
