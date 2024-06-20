@@ -2,6 +2,10 @@ import {ImageSource, Sound, Resource, Loader} from 'excalibur';
 
 // voeg hier jouw eigen resources toe
 const Resources = {
+	// maps
+	ZuiderZiekenhuis: new ImageSource('images/zuiderziekenhuis.png'),
+	GroeneHilledijk: new ImageSource('images/groenehilledijk.png'),
+
 	Background1: new ImageSource('images/background-2.png'),
 	PlayerFullHealthRight: new ImageSource('images/players/playerRight.png'),
 	PlayerFullHealthLeft: new ImageSource('images/players/playerLeft.png'),
