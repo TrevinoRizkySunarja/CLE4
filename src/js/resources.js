@@ -15,6 +15,10 @@ const Resources = {
 	PistolRight: new ImageSource('images/pistolRight.png'),
 	PistolLeft: new ImageSource('images/pistolLeft.png'),
 	PistolUp: new ImageSource('images/pistolUp.png'),
+	//De shotgun
+	ShotungRight: new ImageSource('images/shotungRight.png'),
+	ShotungLeft: new ImageSource('images/shotungLeft.png'),
+	ShotungUp: new ImageSource('images/shotungUp.png'),
 	//De kogel
 	Bullet: new ImageSource('images/bullet.png'),
 
@@ -35,7 +39,9 @@ const Resources = {
 	ZombieFastDown: new ImageSource('images/zombies/fastZombieDown.png'),
 
 	StartButton: new ImageSource('images/start.png'),
+	StartBackground: new ImageSource('images/startbackground.png'),
 	Tutorial: new ImageSource('images/tutorial.png'),
+	TramBackground: new ImageSource('images/background-2.png'),
 
 	PlayerHurt: new Sound('sounds/player_hurt.mp3'),
 	ZombieHurt: new Sound('sounds/zombie_hurt.mp3'),
@@ -45,7 +51,8 @@ const Resources = {
 	GunshotPistol: new Sound('sounds/gunshot-pistol.mp3'),
 	Reloading: new Sound('sounds/reloading.mp3'),
 	GunshotEmpty: new Sound('sounds/gunshot-empty.mp3'),
-	TramBackground: new ImageSource('images/background-2.png')
+	GunshotShotgun: new Sound('sounds/gunshot-shotgun'),
+	ShotgunReloading: new Sound('sounds/shotgun_reloading')
 };
 
 const ResourceLoader = new Loader();

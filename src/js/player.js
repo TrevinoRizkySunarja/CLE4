@@ -33,19 +33,19 @@ class Player extends Actor {
 			this.graphics.use(Resources.PlayerFullHealthDown.toSprite());
 			this.bulletDirection.setTo(0, 1);
 		}
-		//Naar boven
+		// Naar boven
 		if (engine.input.keyboard.isHeld(Keys.W)) {
 			vY -= this.speed;
 			this.graphics.use(Resources.PlayerFullHealthUp.toSprite());
 			this.bulletDirection.setTo(0, -1);
 		}
-		//Naar rechts
+		// Naar rechts
 		if (engine.input.keyboard.isHeld(Keys.D)) {
 			vX += this.speed;
 			this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
 			this.bulletDirection.setTo(1, 0);
 		}
-		//Naar links
+		// Naar links
 		if (engine.input.keyboard.isHeld(Keys.A)) {
 			vX -= this.speed;
 			this.graphics.use(Resources.PlayerFullHealthLeft.toSprite());
@@ -66,7 +66,7 @@ class Player extends Actor {
 		this.prevSpacePressed = spacePressed;
 	}
 
-	//functie dat detecteert dat de player en zombie elkaar hebben gehit
+	// functie dat detecteert dat de player en zombie elkaar hebben gehit
 	hitEnemy(event) {
 		if (event.other instanceof Zombie) {
 			this.hp--;
@@ -75,6 +75,7 @@ class Player extends Actor {
 			this.ui.updateHp(this.hp);
 		}
 	}
+
 	getDistance(x, y) {
 		const deltaX = x - this.pos.x;
 		const deltaY = y - this.pos.y;
