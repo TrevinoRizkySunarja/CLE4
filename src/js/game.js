@@ -1,5 +1,5 @@
 import '../css/style.css';
-import { Engine, DisplayMode, Vector } from 'excalibur';
+import { Engine, DisplayMode, Vector, Buttons } from 'excalibur';
 import { ResourceLoader, Resources } from './resources.js';
 import { GroeneHilledijk } from './scenes/groenehilledijk.js';
 import { Start } from './start.js';
@@ -44,7 +44,7 @@ export class Game extends Engine {
 		this.addScene('start', new Start());
 		this.goToScene('start');
 	}
-	startTutorial() {
+	startTutorial(engine) {
 		this.addScene('tutorial', new Tutorial());
 		this.goToScene('tutorial');
 		setTimeout(() => {
