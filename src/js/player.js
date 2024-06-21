@@ -1,8 +1,8 @@
-import {Actor, Keys, Vector} from 'excalibur';
-import {Resources} from './resources';
-import {Pistol} from './pistol';
-import {UI} from './ui';
-import {Zombie} from './zombie';
+import { Actor, Axes, Buttons, Keys, Vector } from 'excalibur';
+import { Resources } from './resources';
+import { Pistol } from './pistol';
+import { UI } from './ui';
+import { Zombie } from './zombie';
 
 class Player extends Actor {
 	ui;
@@ -12,7 +12,7 @@ class Player extends Actor {
 	pistol;
 
 	constructor(pos) {
-		super({width: 14, height: 30, pos});
+		super({ width: 14, height: 30, pos });
 		this.scale = new Vector(1.5, 1.5);
 	}
 
@@ -26,27 +26,32 @@ class Player extends Actor {
 	}
 
 	onPreUpdate(engine, delta) {
-		let vX = 0;
-		let vY = 0;
-		if (engine.input.keyboard.isHeld(Keys.S)) {
+		// this.xValue =
+		// this.yValue = 
+		// console.log(this.xValue * 80)
+		// console.log(this.yValue * 80)
+		let vX = engine.mygamepad.getAxes(Axes.LeftStickX)
+		let vY = engine.mygamepad.getAxes(Axes.LeftStickY)
+		console.log(vX, vY)
+		if (engine.input.keyboard.isHeld(Keys.S) || vY == 1) {
 			vY += this.speed;
 			this.graphics.use(Resources.PlayerFullHealthDown.toSprite());
 			this.bulletDirection.setTo(0, 1);
 		}
 		// Naar boven
-		if (engine.input.keyboard.isHeld(Keys.W)) {
+		if (engine.input.keyboard.isHeld(Keys.W) || vY == -1) {
 			vY -= this.speed;
 			this.graphics.use(Resources.PlayerFullHealthUp.toSprite());
 			this.bulletDirection.setTo(0, -1);
 		}
 		// Naar rechts
-		if (engine.input.keyboard.isHeld(Keys.D)) {
+		if (engine.input.keyboard.isHeld(Keys.D) || vX == 1) {
 			vX += this.speed;
 			this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
 			this.bulletDirection.setTo(1, 0);
 		}
 		// Naar links
-		if (engine.input.keyboard.isHeld(Keys.A)) {
+		if (engine.input.keyboard.isHeld(Keys.A) || vX == -1) {
 			vX -= this.speed;
 			this.graphics.use(Resources.PlayerFullHealthLeft.toSprite());
 			this.bulletDirection.setTo(-1, 0);
@@ -55,8 +60,8 @@ class Player extends Actor {
 		if (vX === 0 && vY === 0) this.vel = new Vector(0, 0);
 		else this.vel = Vector.fromAngle(Math.atan2(vY, vX)).scale(80);
 
-		const spacePressed = engine.input.keyboard.isHeld(Keys.Space);
-		if (engine.input.keyboard.isHeld(Keys.R)) {
+		const spacePressed = engine.mygamepad.isButtonPressed(Buttons.Face1);
+		if (engine.mygamepad.isButtonPressed(Buttons.Face2)) {
 			this.pistol.reload(engine.currentScene);
 		}
 
@@ -91,4 +96,4 @@ class Player extends Actor {
 	}
 }
 
-export {Player};
+export { Player };

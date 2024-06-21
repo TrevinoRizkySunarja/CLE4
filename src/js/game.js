@@ -1,12 +1,12 @@
 import '../css/style.css';
-import {Engine, DisplayMode, Vector} from 'excalibur';
-import {ResourceLoader, Resources} from './resources.js';
-import {GroeneHilledijk} from './scenes/groenehilledijk.js';
-import {Start} from './start.js';
-import {Tutorial} from './tutorial.js';
-import {Player} from './player.js';
-import {GameScene} from './scenes/gameScene.js';
-import {getWaveData} from './waves.js';
+import { Engine, DisplayMode, Vector } from 'excalibur';
+import { ResourceLoader, Resources } from './resources.js';
+import { GroeneHilledijk } from './scenes/groenehilledijk.js';
+import { Start } from './start.js';
+import { Tutorial } from './tutorial.js';
+import { Player } from './player.js';
+import { GameScene } from './scenes/gameScene.js';
+import { getWaveData } from './waves.js';
 
 const player = new Player(new Vector(0, 0));
 
@@ -36,6 +36,11 @@ export class Game extends Engine {
 	}
 
 	startIntro() {
+		this.input.gamepads.enabled = true
+		this.input.gamepads.on('connect', (connectevent) => {
+			console.log("gamepad detected")
+			this.mygamepad = connectevent.gamepad
+		})
 		this.addScene('start', new Start());
 		this.goToScene('start');
 	}
