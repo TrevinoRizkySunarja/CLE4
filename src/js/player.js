@@ -30,8 +30,9 @@ class Player extends Actor {
 		// this.yValue = 
 		// console.log(this.xValue * 80)
 		// console.log(this.yValue * 80)
-		let vX = engine.mygamepad.getAxes(Axes.LeftStickX)
-		let vY = engine.mygamepad.getAxes(Axes.LeftStickY)
+		console.log(engine.mygamepad)
+		let vX = engine.mygamepad !== undefined ? engine.mygamepad.getAxes(Axes.LeftStickX) : 0
+		let vY = engine.mygamepad !== undefined ? engine.mygamepad.getAxes(Axes.LeftStickY) : 0
 		console.log(vX, vY)
 		if (engine.input.keyboard.isHeld(Keys.S) || vY == 1) {
 			vY += this.speed;
@@ -60,8 +61,8 @@ class Player extends Actor {
 		if (vX === 0 && vY === 0) this.vel = new Vector(0, 0);
 		else this.vel = Vector.fromAngle(Math.atan2(vY, vX)).scale(80);
 
-		const spacePressed = engine.mygamepad.isButtonPressed(Buttons.Face1) || engine.input.keyboard.isHeld(Keys.Space);
-		if (engine.input.keyboard.isHeld(Keys.R) || engine.mygamepad.isButtonPressed(Buttons.Face2)) {
+		const spacePressed = engine.mygamepad !== undefined ? engine.mygamepad.isButtonPressed(Buttons.Face1) : engine.input.keyboard.isHeld(Keys.Space);
+		if (engine.mygamepad !== undefined ? engine.mygamepad.isButtonPressed(Buttons.Face2) : engine.input.keyboard.isHeld(Keys.R)) {
 			this.pistol.reload(engine.currentScene);
 		}
 

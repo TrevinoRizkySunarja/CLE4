@@ -15,8 +15,8 @@ export class Pistol extends Actor {
 		this.graphics.use(Resources.PistolRight.toSprite());
 	}
 	onPreUpdate(engine) {
-		let vX = engine.mygamepad.getAxes(Axes.LeftStickX)
-		let vY = engine.mygamepad.getAxes(Axes.LeftStickY)
+		let vX = engine.mygamepad !== undefined ? engine.mygamepad.getAxes(Axes.LeftStickX) : 0
+		let vY = engine.mygamepad !== undefined ? engine.mygamepad.getAxes(Axes.LeftStickY) : 0
 		//De richting veranderen van pistol met de ingedrukte knop
 		if (engine.input.keyboard.isHeld(Keys.S) || vY == 1) {
 			this.graphics.use(Resources.PistolUp.toSprite());
