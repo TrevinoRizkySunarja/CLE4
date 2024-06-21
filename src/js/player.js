@@ -60,8 +60,8 @@ class Player extends Actor {
 		if (vX === 0 && vY === 0) this.vel = new Vector(0, 0);
 		else this.vel = Vector.fromAngle(Math.atan2(vY, vX)).scale(80);
 
-		const spacePressed = engine.mygamepad.isButtonPressed(Buttons.Face1);
-		if (engine.mygamepad.isButtonPressed(Buttons.Face2)) {
+		const spacePressed = engine.mygamepad.isButtonPressed(Buttons.Face1) || engine.input.keyboard.isHeld(Keys.Space);
+		if (engine.input.keyboard.isHeld(Keys.R) || engine.mygamepad.isButtonPressed(Buttons.Face2)) {
 			this.pistol.reload(engine.currentScene);
 		}
 

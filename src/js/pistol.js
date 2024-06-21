@@ -1,6 +1,6 @@
-import {Actor, Engine, Keys, Vector} from 'excalibur';
-import {Resources} from './resources';
-import {Bullet} from './bullet';
+import { Actor, Axes, Engine, Keys, Vector } from 'excalibur';
+import { Resources } from './resources';
+import { Bullet } from './bullet';
 
 export class Pistol extends Actor {
 	isReloading = false;
@@ -15,20 +15,22 @@ export class Pistol extends Actor {
 		this.graphics.use(Resources.PistolRight.toSprite());
 	}
 	onPreUpdate(engine) {
+		let vX = engine.mygamepad.getAxes(Axes.LeftStickX)
+		let vY = engine.mygamepad.getAxes(Axes.LeftStickY)
 		//De richting veranderen van pistol met de ingedrukte knop
-		if (engine.input.keyboard.isHeld(Keys.S)) {
+		if (engine.input.keyboard.isHeld(Keys.S) || vY == 1) {
 			this.graphics.use(Resources.PistolUp.toSprite());
 			this.pos = new Vector(5.5, -3);
 		}
-		if (engine.input.keyboard.isHeld(Keys.W)) {
+		if (engine.input.keyboard.isHeld(Keys.W) || vY == -1) {
 			this.graphics.use(Resources.PistolUp.toSprite());
 			this.pos = new Vector(6.5, -5);
 		}
-		if (engine.input.keyboard.isHeld(Keys.D)) {
+		if (engine.input.keyboard.isHeld(Keys.D) || vX == 1) {
 			this.graphics.use(Resources.PistolRight.toSprite());
 			this.pos = new Vector(15, -3);
 		}
-		if (engine.input.keyboard.isHeld(Keys.A)) {
+		if (engine.input.keyboard.isHeld(Keys.A) || vX == -1) {
 			this.graphics.use(Resources.PistolLeft.toSprite());
 			this.pos = new Vector(-15, -3);
 		}
