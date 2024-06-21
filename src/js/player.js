@@ -3,6 +3,7 @@ import { Resources } from './resources';
 import { Pistol } from './pistol';
 import { UI } from './ui';
 import { Zombie } from './zombie';
+import { Game } from './game';
 
 class Player extends Actor {
 	ui;
@@ -11,12 +12,13 @@ class Player extends Actor {
 	hp = 3;
 	pistol;
 
-	constructor(pos) {
+	constructor(pos, engine) {
 		super({ width: 14, height: 30, pos });
 		this.scale = new Vector(1.5, 1.5);
 	}
 
-	onInitialize() {
+	onInitialize(engine) {
+		this.engine = engine
 		this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
 		this.ui = new UI();
 		this.addChild(this.ui);
@@ -38,6 +40,7 @@ class Player extends Actor {
 			vY += this.speed;
 			this.graphics.use(Resources.PlayerFullHealthDown.toSprite());
 			this.bulletDirection.setTo(0, 1);
+
 		}
 		// Naar boven
 		if (engine.input.keyboard.isHeld(Keys.W) || vY == -1) {
@@ -70,6 +73,7 @@ class Player extends Actor {
 			this.pistol.shoot(engine.currentScene, this.bulletDirection);
 		}
 		this.prevSpacePressed = spacePressed;
+
 	}
 
 	// functie dat detecteert dat de player en zombie elkaar hebben gehit
@@ -77,7 +81,10 @@ class Player extends Actor {
 		if (event.other instanceof Zombie) {
 			this.hp--;
 			console.log(this.hp);
-			if (this.hp === 0) this.kill();
+			if (this.hp === 0) {
+				this.engine.goToScene('end')
+				this.kill();
+			}
 			this.ui.updateHp(this.hp);
 		}
 	}

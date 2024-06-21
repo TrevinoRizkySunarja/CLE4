@@ -1,4 +1,4 @@
-import {ImageSource, Sound, Resource, Loader} from 'excalibur';
+import { ImageSource, Sound, Resource, Loader } from 'excalibur';
 
 // voeg hier jouw eigen resources toe
 const Resources = {
@@ -43,6 +43,8 @@ const Resources = {
 	StartBackground: new ImageSource('images/startbackground.png'),
 	Tutorial: new ImageSource('images/tutorial.png'),
 	TramBackground: new ImageSource('images/background-2.png'),
+	DeadPlayer: new ImageSource('images/players/deadPlayerRight.png'),
+	EndBackground: new ImageSource('images/endbackground.png'),
 
 	PlayerHurt: new Sound('sounds/player_hurt.mp3'),
 	ZombieHurt: new Sound('sounds/zombie_hurt.mp3'),
@@ -61,4 +63,4 @@ for (let res of Object.values(Resources)) {
 	ResourceLoader.addResource(res);
 }
 
-export {Resources, ResourceLoader};
+export { Resources, ResourceLoader };

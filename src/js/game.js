@@ -7,6 +7,8 @@ import { Tutorial } from './tutorial.js';
 import { Player } from './player.js';
 import { GameScene } from './scenes/gameScene.js';
 import { getWaveData } from './waves.js';
+import { End } from './end.js';
+
 
 const player = new Player(new Vector(0, 0));
 
@@ -15,7 +17,7 @@ export class Game extends Engine {
 	gameScenes;
 	currentSceneId;
 
-	constructor() {
+	constructor(engine) {
 		super({
 			// 1440x900 of 1280x800 of 800x500
 			width: 800,
@@ -33,6 +35,7 @@ export class Game extends Engine {
 		this.gameScenes.forEach((gameScene) => {
 			this.addScene(gameScene.name, gameScene.scene);
 		});
+		this.addScene('end', new End())
 	}
 
 	startIntro() {
@@ -49,8 +52,9 @@ export class Game extends Engine {
 		this.goToScene('tutorial');
 		setTimeout(() => {
 			this.startGame();
-		}, 3000);
+		}, 20000);
 	}
+
 	startGame() {
 		this.goToScene(this.gameScenes[this.currentSceneId].name);
 	}
