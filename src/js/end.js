@@ -1,4 +1,4 @@
-import { Color, DisplayMode, Font, Label, Scene, Vector } from 'excalibur';
+import { Buttons, Color, DisplayMode, Font, Keys, Label, Scene, Vector } from 'excalibur';
 import { Player } from './player';
 import { UI } from './ui';
 import { StartButton } from './startButton';
@@ -20,7 +20,7 @@ export class End extends Scene {
     }
     onInitialize() {
         this.title = new Label({
-            text: 'Tutorial',
+            text: 'Game over',
             font: new Font({
                 family: 'impact',
                 size: 48,
@@ -29,4 +29,10 @@ export class End extends Scene {
             pos: new Vector(165, 100)
         });
     }
+    onPreUpdate(engine) {
+        if (engine.mygamepad !== undefined ? engine.mygamepad.isButtonPressed(Buttons.Face3) : engine.input.keyboard.isHeld(Keys.Enter)) {
+            window.location.reload()
+        }
+    }
+
 }
