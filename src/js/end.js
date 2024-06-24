@@ -7,6 +7,7 @@ import { StartBackground } from './startbackground';
 import { DeadPlayerImage } from './deadPlayer';
 import { EndBackground } from './endbackground';
 import { EndTitle } from './endTitle';
+import { RestartButton } from './restart';
 
 export class End extends Scene {
     constructor() {
@@ -19,7 +20,13 @@ export class End extends Scene {
         this.add(this.deadPlayer);
         this.title = new EndTitle()
         this.add(this.title)
-
+        this.restart = new RestartButton()
+        this.add(this.restart)
+    }
+    onPreUpdate(engine) {
+        if (engine.mygamepad !== undefined ? engine.mygamepad.isButtonPressed(Buttons.Face3) : engine.input.keyboard.isHeld(Keys.P)) {
+            window.location.reload()
+        }
     }
 
 }

@@ -1,9 +1,9 @@
-import {Color, DisplayMode, Font, Label, Scene, Vector} from 'excalibur';
-import {Player} from './player';
-import {UI} from './ui';
-import {StartButton} from './startButton';
-import {ZombieImage} from './zombieImage';
-import {StartBackground} from './startbackground';
+import { Buttons, Color, DisplayMode, Font, Keys, Label, Scene, Vector } from 'excalibur';
+import { Player } from './player';
+import { UI } from './ui';
+import { StartButton } from './startButton';
+import { ZombieImage } from './zombieImage';
+import { StartBackground } from './startbackground';
 
 export class Start extends Scene {
 	constructor() {
@@ -18,5 +18,10 @@ export class Start extends Scene {
 		this.add(this.startBut);
 		this.add(this.zombieImage);
 		this.add(this.zombieImage2);
+	}
+	onPreUpdate(engine) {
+		if (engine.mygamepad !== undefined ? engine.mygamepad.isButtonPressed(Buttons.Face3) : engine.input.keyboard.isHeld(Keys.P)) {
+			engine.startTutorial()
+		}
 	}
 }

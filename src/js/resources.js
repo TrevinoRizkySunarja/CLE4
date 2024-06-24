@@ -47,6 +47,7 @@ const Resources = {
 	EndBackground: new ImageSource('images/endbackground.png'),
 	TutorialTitle: new ImageSource('images/tutorialTitle.png'),
 	EndTitle: new ImageSource('images/gameover.png'),
+	RestartButton: new ImageSource('images/restart.png'),
 
 	PlayerHurt: new Sound('sounds/player_hurt.mp3'),
 	ZombieHurt: new Sound('sounds/zombie_hurt.mp3'),
