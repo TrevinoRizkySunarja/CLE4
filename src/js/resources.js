@@ -55,7 +55,8 @@ const Resources = {
 	Reloading: new Sound('sounds/reloading.mp3'),
 	GunshotEmpty: new Sound('sounds/gunshot-empty.mp3'),
 	GunshotShotgun: new Sound('sounds/gunshot-shotgun'),
-	ShotgunReloading: new Sound('sounds/shotgun_reloading')
+	ShotgunReloading: new Sound('sounds/shotgun_reloading'),
+	ThemeSong: new Sound('sounds/ThemeSong.mp3')
 };
 
 const ResourceLoader = new Loader();
