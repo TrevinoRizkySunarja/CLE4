@@ -1,4 +1,4 @@
-import { ImageSource, Sound, Resource, Loader } from 'excalibur';
+import {ImageSource, Sound, Resource, Loader} from 'excalibur';
 
 // voeg hier jouw eigen resources toe
 const Resources = {
@@ -54,8 +54,8 @@ const Resources = {
 	GunshotPistol: new Sound('sounds/gunshot-pistol.mp3'),
 	Reloading: new Sound('sounds/reloading.mp3'),
 	GunshotEmpty: new Sound('sounds/gunshot-empty.mp3'),
-	GunshotShotgun: new Sound('sounds/gunshot-shotgun'),
-	ShotgunReloading: new Sound('sounds/shotgun_reloading')
+	GunshotShotgun: new Sound('sounds/gunshot-shotgun.mp3'),
+	ShotgunReloading: new Sound('sounds/shotgun_reloading.mp3')
 };
 
 const ResourceLoader = new Loader();
@@ -63,4 +63,4 @@ for (let res of Object.values(Resources)) {
 	ResourceLoader.addResource(res);
 }
 
-export { Resources, ResourceLoader };
+export {Resources, ResourceLoader};
