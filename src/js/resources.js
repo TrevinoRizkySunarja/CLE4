@@ -45,6 +45,8 @@ const Resources = {
 	TramBackground: new ImageSource('images/background-2.png'),
 	DeadPlayer: new ImageSource('images/players/deadPlayerRight.png'),
 	EndBackground: new ImageSource('images/endbackground.png'),
+	TutorialTitle: new ImageSource('images/tutorialTitle.png'),
+	EndTitle: new ImageSource('images/gameover.png'),
 
 	PlayerHurt: new Sound('sounds/player_hurt.mp3'),
 	ZombieHurt: new Sound('sounds/zombie_hurt.mp3'),
