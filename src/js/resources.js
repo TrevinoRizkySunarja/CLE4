@@ -45,6 +45,9 @@ const Resources = {
 	TramBackground: new ImageSource('images/background-2.png'),
 	DeadPlayer: new ImageSource('images/players/deadPlayerRight.png'),
 	EndBackground: new ImageSource('images/endbackground.png'),
+	TutorialTitle: new ImageSource('images/tutorialTitle.png'),
+	EndTitle: new ImageSource('images/gameover.png'),
+	RestartButton: new ImageSource('images/restart.png'),
 
 	PlayerHurt: new Sound('sounds/player_hurt.mp3'),
 	ZombieHurt: new Sound('sounds/zombie_hurt.mp3'),
@@ -55,7 +58,8 @@ const Resources = {
 	Reloading: new Sound('sounds/reloading.mp3'),
 	GunshotEmpty: new Sound('sounds/gunshot-empty.mp3'),
 	GunshotShotgun: new Sound('sounds/gunshot-shotgun.mp3'),
-	ShotgunReloading: new Sound('sounds/shotgun_reloading.mp3')
+	ShotgunReloading: new Sound('sounds/shotgun_reloading.mp3'),
+	ThemeSong: new Sound('sounds/ThemeSong.mp3')
 };
 
 const ResourceLoader = new Loader();

@@ -1,4 +1,4 @@
-import {Actor, Keys, Vector, Engine, Label, Font, Color} from 'excalibur';
+import { Actor, Keys, Vector, Engine, Label, Font, Color } from 'excalibur';
 
 export class UI extends Actor {
 	//De labels aanmaken
@@ -27,7 +27,7 @@ export class UI extends Actor {
 				size: 24,
 				color: Color.Red
 			}),
-			pos: new Vector(-70, -120)
+			pos: new Vector(-250, -120)
 		});
 		this.addChild(this.hpLabel);
 

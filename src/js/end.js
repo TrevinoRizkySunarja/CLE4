@@ -6,31 +6,25 @@ import { ZombieImage } from './zombieImage';
 import { StartBackground } from './startbackground';
 import { DeadPlayerImage } from './deadPlayer';
 import { EndBackground } from './endbackground';
+import { EndTitle } from './endTitle';
+import { RestartButton } from './restart';
 
 export class End extends Scene {
     constructor() {
         super();
         this.backgroundColor = Color.Gray
-        this.zombieImage = new ZombieImage(315);
-        this.deadPlayer = new DeadPlayerImage(350)
+        this.zombieImage = new ZombieImage(380);
+        this.deadPlayer = new DeadPlayerImage(410)
 
         this.add(this.zombieImage);
         this.add(this.deadPlayer);
-
-    }
-    onInitialize() {
-        this.title = new Label({
-            text: 'Game over',
-            font: new Font({
-                family: 'impact',
-                size: 48,
-                color: Color.Red
-            }),
-            pos: new Vector(165, 100)
-        });
+        this.title = new EndTitle()
+        this.add(this.title)
+        this.restart = new RestartButton()
+        this.add(this.restart)
     }
     onPreUpdate(engine) {
-        if (engine.mygamepad !== undefined ? engine.mygamepad.isButtonPressed(Buttons.Face3) : engine.input.keyboard.isHeld(Keys.Enter)) {
+        if (engine.mygamepad !== undefined ? engine.mygamepad.isButtonPressed(Buttons.Face3) : engine.input.keyboard.isHeld(Keys.P)) {
             window.location.reload()
         }
     }
