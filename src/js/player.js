@@ -1,9 +1,9 @@
-import { Actor, Axes, Buttons, Keys, Vector } from 'excalibur';
-import { Resources } from './resources';
-import { Pistol } from './pistol';
-import { UI } from './ui';
-import { Zombie } from './zombie';
-import { Game } from './game';
+import {Actor, Axes, Buttons, Keys, Vector} from 'excalibur';
+import {Resources} from './resources';
+import {Pistol} from './pistol';
+import {UI} from './ui';
+import {Zombie} from './zombie';
+import {Game} from './game';
 
 class Player extends Actor {
 	ui;
@@ -13,12 +13,12 @@ class Player extends Actor {
 	pistol;
 
 	constructor(pos, engine) {
-		super({ width: 14, height: 30, pos });
+		super({width: 14, height: 30, pos});
 		this.scale = new Vector(1.5, 1.5);
 	}
 
 	onInitialize(engine) {
-		this.engine = engine
+		this.engine = engine;
 		this.graphics.use(Resources.PlayerFullHealthRight.toSprite());
 		this.ui = new UI();
 		this.addChild(this.ui);
@@ -29,18 +29,17 @@ class Player extends Actor {
 
 	onPreUpdate(engine, delta) {
 		// this.xValue =
-		// this.yValue = 
+		// this.yValue =
 		// console.log(this.xValue * 80)
 		// console.log(this.yValue * 80)
-		console.log(engine.mygamepad)
-		let vX = engine.mygamepad !== undefined ? engine.mygamepad.getAxes(Axes.LeftStickX) : 0
-		let vY = engine.mygamepad !== undefined ? engine.mygamepad.getAxes(Axes.LeftStickY) : 0
-		console.log(vX, vY)
+		console.log(engine.mygamepad);
+		let vX = engine.mygamepad !== undefined ? engine.mygamepad.getAxes(Axes.LeftStickX) : 0;
+		let vY = engine.mygamepad !== undefined ? engine.mygamepad.getAxes(Axes.LeftStickY) : 0;
+		console.log(vX, vY);
 		if (engine.input.keyboard.isHeld(Keys.S) || vY == 1) {
 			vY += this.speed;
 			this.graphics.use(Resources.PlayerFullHealthDown.toSprite());
 			this.bulletDirection.setTo(0, 1);
-
 		}
 		// Naar boven
 		if (engine.input.keyboard.isHeld(Keys.W) || vY == -1) {
@@ -64,7 +63,8 @@ class Player extends Actor {
 		if (vX === 0 && vY === 0) this.vel = new Vector(0, 0);
 		else this.vel = Vector.fromAngle(Math.atan2(vY, vX)).scale(80);
 
-		const spacePressed = engine.mygamepad !== undefined ? engine.mygamepad.isButtonPressed(Buttons.Face1) : engine.input.keyboard.isHeld(Keys.Space);
+		const spacePressed =
+			engine.mygamepad !== undefined ? engine.mygamepad.isButtonPressed(Buttons.Face1) : engine.input.keyboard.isHeld(Keys.Space);
 		if (engine.mygamepad !== undefined ? engine.mygamepad.isButtonPressed(Buttons.Face2) : engine.input.keyboard.isHeld(Keys.R)) {
 			this.pistol.reload(engine.currentScene);
 		}
@@ -74,6 +74,13 @@ class Player extends Actor {
 		}
 		this.prevSpacePressed = spacePressed;
 
+		console.log(engine.currentScene);
+		if (engine.currentScene.waves[0]) {
+			this.pos.x = Math.max(this.pos.x, engine.currentScene.waves[0].bounds.xMin);
+			this.pos.x = Math.min(this.pos.x, engine.currentScene.waves[0].bounds.xMax);
+			this.pos.y = Math.max(this.pos.y, engine.currentScene.waves[0].bounds.xMin);
+			this.pos.y = Math.min(this.pos.y, engine.currentScene.waves[0].bounds.xMax);
+		}
 	}
 
 	// functie dat detecteert dat de player en zombie elkaar hebben gehit
@@ -82,7 +89,7 @@ class Player extends Actor {
 			this.hp--;
 			console.log(this.hp);
 			if (this.hp === 0) {
-				this.engine.goToScene('end')
+				this.engine.goToScene('end');
 				this.kill();
 			}
 			this.ui.updateHp(this.hp);
@@ -104,4 +111,4 @@ class Player extends Actor {
 	}
 }
 
-export { Player };
+export {Player};

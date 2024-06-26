@@ -25,12 +25,13 @@ const spawnPoints = {
 };
 
 class Wave {
-	constructor(title, preparationMilliseconds, durationMilliseconds, zombieTypes, scene) {
+	constructor(title, preparationMilliseconds, durationMilliseconds, zombieTypes, scene, bounds) {
 		this.title = title;
 		this.preparationMilliseconds = preparationMilliseconds;
 		this.durationMilliseconds = durationMilliseconds;
 		this.zombies = [];
 		this.scene = scene;
+		this.bounds = bounds;
 		zombieTypes.forEach((zombieType) => {
 			for (let i = 0; i < zombieType.amount; i++) {
 				const spawnPoint = spawnPoints[scene][Math.floor(Math.random() * spawnPoints[scene].length)];
@@ -57,7 +58,13 @@ waves.push(
 				Actor: NormalZombie
 			}
 		],
-		'zuiderziekenhuis'
+		'zuiderziekenhuis',
+		{
+			xMin: -400,
+			xMax: 400,
+			yMin: -400,
+			yMax: 400
+		}
 	)
 );
 
@@ -78,7 +85,13 @@ waves.push(
 				Actor: FatZombie
 			}
 		],
-		'groenehilledijk'
+		'groenehilledijk',
+		{
+			xMin: -400,
+			xMax: 400,
+			yMin: -400,
+			yMax: 400
+		}
 	)
 );
 
@@ -104,7 +117,13 @@ waves.push(
 				Actor: FastZombie
 			}
 		],
-		'groenehilledijk'
+		'groenehilledijk',
+		{
+			xMin: -400,
+			xMax: 400,
+			yMin: -400,
+			yMax: 400
+		}
 	)
 );
 
