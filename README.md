@@ -1,18 +1,64 @@
-# Excalibur Startproject 2024
+# CLE4
 
-- Vanaf de HR repository: klik op USE THIS TEMPLATE. Kies jouw eigen github account. 
-- Kopieer de `git url` van jouw eigen repository (dit vind je onder de "code" button).
-- Open VS Code. Klik op "file" en kies "clone repository".
-- Sla het op in `xampp/htdocs/programmeren4/mijnproject`.
-- Typ `npm install` en `npm run dev` in de terminal in VS Code.
-- Installeer de [Chrome Excalibur Debugger](https://chromewebstore.google.com/detail/excalibur-dev-tools/dinddaeielhddflijbbcmpefamfffekc)
-- [🔥 Bekijk het instructie filmpje!](https://youtu.be/UIVpe4L5_P4)
+Top-down zombie survival game built with JavaScript, Vite and Excalibur. The project contains multiple scenes, wave-based enemy spawning, player movement, shooting, reloading, health UI, audio, sprite assets and a production build in `docs/`.
 
-## Schermafmeting
+## Features
 
-In game.js geef je een schermafmeting aan in 16/9 verhouding. Als je game heel groot is moeten je afbeeldingen ook groter / scherper zijn. Een kleine game kan je op een groot scherm tonen met `displayMode: DisplayMode.FitScreen`. Een aantal geschikte afmetingen:
+- Start screen, tutorial flow and game-over screen
+- Multiple playable scenes, including Zuiderziekenhuis and Groene Hilledijk
+- Wave-based enemy system with normal, fast and heavy zombies
+- Keyboard and gamepad input support
+- Player health, ammo, reload and shooting mechanics
+- Pistol and shotgun weapon logic
+- Sprite-based characters, weapons, maps and UI assets
+- Sound effects and looping theme music
+- Vite build output configured for GitHub Pages through `docs/`
 
-- 800 x 450
-- 1280 x 720 
-- 1600 x 900 
-- 1920 x 1080
+## Tech Stack
+
+- JavaScript modules
+- Excalibur game engine
+- Vite
+- HTML and CSS
+
+## Controls
+
+| Action | Keyboard | Gamepad |
+| --- | --- | --- |
+| Move | `W`, `A`, `S`, `D` | Left stick |
+| Shoot | `Space` | Face button 1 |
+| Reload | `R` | Face button 2 |
+
+## Getting Started
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+```text
+src/css/       Game styling
+src/js/        Game classes, scenes, player, enemies, UI and resources
+public/        Source images and audio used by the game
+docs/          Built version for GitHub Pages
+index.html     App entry page
+```
+
+## Portfolio Notes
+
+This repository shows JavaScript class structure, scene management, asset loading, game loops, collision handling and interactive gameplay using Excalibur.
