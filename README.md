@@ -2,6 +2,10 @@
 
 Top-down zombie survival game built with JavaScript, Vite and Excalibur. The project contains multiple scenes, wave-based enemy spawning, player movement, shooting, reloading, health UI, audio, sprite assets and a production build in `docs/`.
 
+## Live Demo
+
+Play the game here: [CLE4 live demo](https://trevinorizkysunarja.github.io/CLE4/)
+
 ## Features
 
 - Start screen, tutorial flow and game-over screen
